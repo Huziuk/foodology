@@ -26,6 +26,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 150px;
+    .card {
+        .card-ico {
+            background: url("../../../assets/images/star.svg") center/30px no-repeat $primary;
+        }
+    }
 }
 
 .about-us-content {
@@ -169,7 +174,7 @@
             }
         }
     }
-    .story{
+    .story {
         margin-bottom: 80px;
     }
     .story-title {
@@ -207,39 +212,39 @@
             }
         }
     }
-    .team{
+    .team {
         flex-wrap: wrap;
         flex-direction: column-reverse;
         margin-bottom: 80px;
-        .team-title{
+        .team-title {
             width: 100%;
             margin-bottom: 50px;
-            p{
+            p {
                 margin-top: 10px;
             }
         }
-        .team-photo{
+        .team-photo {
             width: 100%;
             height: 45vh;
             border-radius: 25px;
         }
     }
-    .value{
+    .value {
         margin-bottom: 0px;
     }
-    .value-title{
+    .value-title {
         margin-bottom: 30px;
-        p{
+        p {
             width: 100%;
             margin-top: 10px;
         }
     }
-    .value-card{
+    .value-card {
         flex-direction: column;
         align-items: center;
-        .outline-card{
+        .outline-card {
             margin-bottom: 70px;
-            &:last-child{
+            &:last-child {
                 margin-bottom: 0;
             }
         }

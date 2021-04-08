@@ -1,6 +1,20 @@
 @import "../../shared/styles/reset";
 @import "../../shared/styles/base";
 
+.article-preview {
+    position: relative;
+    &::before {
+        content: "";
+        display: block;
+        height: 561px;
+        background-color: $primary;
+        position: absolute;
+        top: 77px;
+        left: 90%;
+        right: 0px;
+    }
+}
+
 .prev {
     position: relative;
 }
@@ -20,16 +34,25 @@
 }
 
 .preview-right {
-    //width: 100%;
+    width: 50%;
     height: 561px;
     border-radius: 30px 0 0 30px;
     background: $primary;
-    position: absolute;
-    top: 77px;
-    left: 570px;
+    position: relative;
     right: 0;
+    margin-top: 77px;
     img {
         margin-left: -70px;
+    }
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -70px;
+        width: 680px;
+        height: 545px;
+        background: url("../../../assets/images/preview.png") center/cover no-repeat;
+        z-index: 100;
     }
 }
 
@@ -50,6 +73,16 @@
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    .card:first-child{
+        .card-ico{
+            background: url('../../../assets/images/star.svg') center/30px no-repeat $primary;
+        }
+    }
+    .card:nth-child(2){
+        .card-ico{
+            background: url('../../../assets/images/orange.svg') center/41px no-repeat $primary;
+        }
+    }
 }
 
 .delivery {
@@ -114,32 +147,47 @@
 }
 
 @media screen and (max-width: 414px) {
+    .article-preview {
+        &::before {
+            top: 475px;
+            height: 40vh;
+        }
+    }
     .preview {
         flex-wrap: wrap;
         padding: 0px 30px;
     }
     .preview-left {
         margin: 30px 0 40px;
+        height: 365px;
         .sup-title {
             text-transform: none;
+            letter-spacing: 0.5px;
         }
         p {
             margin: 10px 0px 30px;
         }
     }
     .preview-right {
-        position: static;
+        position: relative;
         margin-top: 40px;
         width: 100%;
         height: 40vh;
-        //padding-left: 30px;
         img {
             height: 100%;
-            //margin-left: -40px;
+        }
+        &::after {
+            left: -30px;
+            position: absolute;
+            width: 360px;
+            height: 320px;
+            height: 100%;
+            background: url("../../../assets/images/preview.png") left/360px no-repeat;
         }
     }
     .commitment {
         padding: 0px 30px;
+        margin-top: 80px;
         margin-bottom: 80px;
     }
     .commitment-header {

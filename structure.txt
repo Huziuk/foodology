@@ -18,3 +18,7 @@ app/
         guards
         models
         interfaces
+
+ng build --prod --base-href "https://Huziuk.github.io/foodology/"
+
+npx angular-cli-ghpages --dir=dist/foodology
