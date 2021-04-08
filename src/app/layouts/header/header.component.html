@@ -1,0 +1,24 @@
+<header>
+    <div class="wrapper">
+        <div class="header-inner">
+            <div class="header-left">
+                <button (click)="toggleBurger()" class="open-burger"></button>
+                <div *ngIf="isVisibleburger" class="burger-menu">
+                    <a (click)="toggleBurger()" [routerLink]="[ '/about' ]" routerLinkActive="active" class="link">About</a>
+                    <a (click)="toggleBurger()" [routerLink]="[ '/foods' ]" routerLinkActive="active" class="link">Foods</a>
+                    <a (click)="toggleBurger()" [routerLink]="[ '/pricing' ]" routerLinkActive="active" class="link">Pricing</a>
+                </div>
+                <div class="logo">
+                    <a [routerLink]="[ '/home' ]">Fodoology</a>
+                </div>
+            </div>
+            <nav>
+                <a [routerLink]="[ '/about' ]" routerLinkActive="active" class="link">About</a>
+                <a [routerLink]="[ '/foods' ]" routerLinkActive="active" class="link">Foods</a>
+                <a [routerLink]="[ '/pricing' ]" routerLinkActive="active" class="link">Pricing</a>
+                <a [routerLink]="[ '/login' ]" routerLinkActive="active-sing-in" class="outline-primary-medium sing-in">Sing In</a>
+                <button class="primary-medium basket"></button>
+            </nav>
+        </div>
+    </div>
+</header>

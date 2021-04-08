@@ -1,0 +1,20 @@
+app/
+    admin/
+        admin-category
+        admin-product
+        admin-orders
+    layouts/
+        header
+        footer
+        subscribe
+    pages/
+        home
+        pricing
+        about
+        foods
+        login
+    shared/
+        services
+        guards
+        models
+        interfaces

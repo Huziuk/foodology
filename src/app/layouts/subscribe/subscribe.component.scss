@@ -1,0 +1,29 @@
+@import "../../shared/styles/reset";
+@import "../../shared/styles/base";
+
+.subscribe {
+    height: 520px;
+    margin-bottom: 150px;
+    padding: 100px 70px;
+    background: url("../../../assets/images/subscribe.jpg") center/cover no-repeat;
+}
+
+.subscribe-content {
+    width: 450px;
+    p {
+        margin: 20px 0px 30px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .subscribe-content {
+        width: 100%;
+        p {
+            margin: 10px 0px 30px;
+        }
+    }
+    .subscribe {
+        padding: 88px 30px 140px;
+        margin-bottom: 0px;
+    }
+}

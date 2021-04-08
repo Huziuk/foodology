@@ -1,0 +1,81 @@
+@import '../../shared/styles/reset';
+@import '../../shared/styles/base';
+
+.login{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.login-photo{
+    background: url('../../../assets/images/login-img.jpg') center/cover no-repeat;
+    width: 55%;
+    //height: 900px;
+}
+
+.login-form{
+    width: 360px;
+    margin: 160px 0px 120px 120px;
+    display: flex;
+    flex-direction: column;
+    .text-with-line{
+        position: relative;
+        margin-bottom: 27px;
+        p{
+            width: 232px;
+            background-color: #fff;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+            color: #183B56;
+            z-index: 10;
+        }
+        .line{
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #DFE1E6;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+    }
+    label{
+        margin-bottom: 25px;
+    }
+    .btn-forgot{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 32px;
+    }
+    p{
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+.google-btn{
+    position: relative;
+    background: url('../../../assets/images/google-login.svg') -5px no-repeat $primary;
+    margin: 38px 0px 25px;
+    &:hover{
+        background: url('../../../assets/images/google-login.svg') -5px no-repeat $primaryHover;
+    }
+}
+
+@media screen and (max-width: 414px){
+    .login-photo{
+        display: none;
+    }
+    .login-form{
+        width: 100%;
+        padding: 0px 30px;
+        margin: 50px 0px 0px;
+        label{
+            width: 100%;
+        }
+        h4{
+            font-size: 23px;
+        }
+    }
+}

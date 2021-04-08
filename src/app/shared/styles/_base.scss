@@ -1,0 +1,396 @@
+// ? Variables
+$primary: #fe724c;
+$primaryHover: #e25b37;
+$secondary: #26120c;
+$titleText: #333;
+$mainText: #707070;
+$outline: #dfe1e6;
+$form: #fafbfc;
+$whiteText: #fff;
+$disabled: #c7c7c7;
+$focus: #f23400;
+$placeholder: #33333366;
+$success: #27ae60;
+$warning: #f2c94c;
+$danger: #eb5757;
+$labelColor: #5a7184;
+// ? Fonts
+/* poppins-regular - latin */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../../assets/fonts/poppins-v15-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local(""), url("../../../assets/fonts/poppins-v15-latin-regular.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */ url("../../../assets/fonts/poppins-v15-latin-regular.woff2") format("woff2"),
+        /* Super Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-regular.woff") format("woff"),
+        /* Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-regular.ttf") format("truetype"),
+        /* Safari, Android, iOS */ url("../../../assets/fonts/poppins-v15-latin-regular.svg#Poppins") format("svg"); /* Legacy iOS */
+}
+/* poppins-500 - latin */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    src: url("../../../assets/fonts/poppins-v15-latin-500.eot"); /* IE9 Compat Modes */
+    src: local(""), url("../../../assets/fonts/poppins-v15-latin-500.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */ url("../../../assets/fonts/poppins-v15-latin-500.woff2") format("woff2"),
+        /* Super Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-500.woff") format("woff"),
+        /* Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-500.ttf") format("truetype"),
+        /* Safari, Android, iOS */ url("../../../assets/fonts/poppins-v15-latin-500.svg#Poppins") format("svg"); /* Legacy iOS */
+}
+/* poppins-700 - latin */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    src: url("../../../assets/fonts/poppins-v15-latin-700.eot"); /* IE9 Compat Modes */
+    src: local(""), url("../../../assets/fonts/poppins-v15-latin-700.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */ url("../../../assets/fonts/poppins-v15-latin-700.woff2") format("woff2"),
+        /* Super Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-700.woff") format("woff"),
+        /* Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-700.ttf") format("truetype"),
+        /* Safari, Android, iOS */ url("../../../assets/fonts/poppins-v15-latin-700.svg#Poppins") format("svg"); /* Legacy iOS */
+}
+/* poppins-800 - latin */
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 800;
+    src: url("../../../assets/fonts/poppins-v15-latin-800.eot"); /* IE9 Compat Modes */
+    src: local(""), url("../../../assets/fonts/poppins-v15-latin-800.eot?#iefix") format("embedded-opentype"),
+        /* IE6-IE8 */ url("../../../assets/fonts/poppins-v15-latin-800.woff2") format("woff2"),
+        /* Super Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-800.woff") format("woff"),
+        /* Modern Browsers */ url("../../../assets/fonts/poppins-v15-latin-800.ttf") format("truetype"),
+        /* Safari, Android, iOS */ url("../../../assets/fonts/poppins-v15-latin-800.svg#Poppins") format("svg"); /* Legacy iOS */
+}
+
+// ? General Styles ======================
+
+.wrapper {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+// Text Styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+    font-family: "Poppins";
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 120%;
+    color: $titleText;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 120%;
+    color: $titleText;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 150%;
+    color: $titleText;
+}
+
+h4 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 150%;
+    color: $titleText;
+}
+
+h5 {
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 150%;
+    color: $titleText;
+}
+
+h6 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 32px;
+    color: #59423c;
+}
+
+p {
+    font-size: 16px;
+    line-height: 32px;
+    color: $mainText;
+}
+
+.sup-title {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 32px;
+    letter-spacing: 5px;
+    color: $primary;
+    text-transform: uppercase;
+}
+
+.primary-text {
+    color: $primary;
+}
+
+// Buttons Styles
+.primary-large,
+.outline-primary-large {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 57px;
+    outline: none;
+    border: 3px solid $primary;
+    background: $primary;
+    border-radius: 25px;
+    padding: 0px 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 180%;
+    color: $whiteText;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    &:hover {
+        background: $primaryHover;
+        border: 3px solid $primaryHover;
+    }
+    &:focus {
+        border: 3px solid $focus;
+    }
+    &:disabled {
+        background: $disabled;
+        border: 3px solid $disabled;
+        cursor: default;
+    }
+}
+.outline-primary-large {
+    background: transparent;
+    color: $primary;
+    &:hover {
+        color: $whiteText;
+    }
+    &:disabled {
+        color: $whiteText;
+    }
+}
+
+.primary-medium,
+.outline-primary-medium {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    outline: none;
+    border: 3px solid $primary;
+    background: $primary;
+    border-radius: 25px;
+    padding: 0px 30px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 180%;
+    text-transform: uppercase;
+    color: $whiteText;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    &:hover {
+        background-color: $primaryHover;
+        border: 3px solid $primaryHover;
+    }
+    &:focus {
+        border: 3px solid $focus;
+    }
+    &:disabled {
+        background-color: $disabled;
+        border: 3px solid $disabled;
+        cursor: default;
+    }
+}
+.outline-primary-medium {
+    background-color: transparent;
+    color: $primary;
+    &:hover {
+        color: $whiteText;
+    }
+    &:disabled {
+        color: $whiteText;
+    }
+}
+
+.btn {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 32px;
+    letter-spacing: 0.5px;
+    color: #1565d8;
+    cursor: pointer;
+    transition: all .2s ease;
+    &:hover{
+        color: #0849a5;
+    }
+}
+
+// Text Input
+.control,
+.control-success,
+.control-warning,
+.control-danger {
+    height: 56px;
+    padding-left: 20px;
+    outline: none;
+    background: #fafbfc;
+    border: 1px solid #dfe1e6;
+    border-radius: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 32px;
+    letter-spacing: 0.5px;
+    color: $titleText;
+    transition: all 0.2s ease;
+    &:focus {
+        border: 1px solid $primary;
+    }
+    &:disabled {
+        background: #f2f2f2;
+    }
+    &::placeholder {
+        color: $placeholder;
+    }
+}
+.control-success {
+    border: 1px solid $success;
+}
+.control-warning {
+    border: 1px solid $warning;
+}
+.control-danger {
+    border: 1px solid $danger;
+    background: #eb575733;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+}
+
+.label-name {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 32px;
+    color: $labelColor;
+}
+
+// Card
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 333px;
+    height: 390px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #dfe1e6;
+    border-radius: 50px;
+    .card-ico {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary;
+    }
+    h3 {
+        margin: 30px 0;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+.outline-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 333px;
+    height: 273px;
+    padding: 0px 30px;
+    background: #ffffff;
+    border-radius: 50px;
+    .outline-card-ico {
+        width: 80px;
+        height: 80px;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary;
+    }
+    h3 {
+        margin: 30px 0px 20px;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .wrapper {
+        width: 100%;
+    }
+    h1 {
+        font-size: 45px;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    h3 {
+        font-size: 23px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 14px;
+    }
+    .card {
+        h3 {
+            margin: 25px 0 20px;
+            font-size: 36px;
+        }
+    }
+}
