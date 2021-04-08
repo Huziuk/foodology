@@ -15,6 +15,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { FoodsComponent } from './pages/foods/foods.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SubscribeComponent } from './layouts/subscribe/subscribe.component';
+import { FeedbackComponent } from './layouts/feedback/feedback.component';
+import { MenustodayComponent } from './layouts/menustoday/menustoday.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SubscribeComponent } from './layouts/subscribe/subscribe.component';
     AdminCategoryComponent,
     AdminProductComponent,
     AdminOrdersComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    FeedbackComponent,
+    MenustodayComponent
   ],
   imports: [
     BrowserModule,

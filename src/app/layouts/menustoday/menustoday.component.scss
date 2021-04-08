@@ -1,0 +1,110 @@
+@import '../../shared/styles/base';
+
+.menu-title{
+    text-align: center;
+    margin-bottom: 50px;
+    p{
+        margin: 0 auto;
+        width: 474px;
+    }
+}
+
+.menu-content{
+    display: flex;
+    justify-content: space-between;
+}
+.menu-photo{
+    width: 565px;
+    height: 565px;
+    border-radius: 25px;
+    background: url('../../../assets/images/menu-img.jpg');
+}
+.menu-products{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.menu-product-title{
+    margin-bottom: 45px;
+    h3{
+        margin-bottom: 20px;
+    }
+}
+.menu-product{
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: flex-end;
+    .menu-ico{
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        margin-left: 38px;
+    }
+    &:nth-child(1) .menu-ico{
+        background: url('../../../assets/images/fish.svg') center/35px no-repeat $primary;
+    }
+    &:nth-child(2) .menu-ico{
+        background: url('../../../assets/images/icecream.svg') center/21px no-repeat $primary;
+    }
+    &:nth-child(3) .menu-ico{
+        background: url('../../../assets/images/cocktail.svg') center/30px no-repeat $primary;
+    }
+}
+
+.menu-btns{
+    width: 95px;
+    display: flex;
+    justify-content: space-between;
+    button{
+        width: 35px;
+        height: 35px;
+        outline: none;
+        border: none;
+        transition: all .2s ease;
+        cursor: pointer;
+        &:disabled{
+            opacity: .6;
+        }
+        &:hover{
+            opacity: .8;
+        }
+        &:first-child{
+            background: url('../../../assets/images/row-l.svg') center/cover no-repeat;
+        }
+        &:last-child{
+            background: url('../../../assets/images/row-r.svg') center/cover no-repeat;
+        }
+    }
+}
+
+@media screen and (max-width: 414px){
+    .menu{
+        padding: 0px 30px;
+    }
+    .menu-title{
+        p{
+            width: 100%;
+        }
+    }
+    .menu-product-title{
+        text-align: right;
+    }
+    .menu-content{
+        flex-wrap: wrap;
+        .menu-photo{
+            width: 100%;
+            height: 47vh;
+            margin-bottom: 50px;
+        }
+    }
+    .menu-products{
+        width: 100%;
+    }
+    .menu-product{
+        margin-bottom: 20px;
+    }
+    .menu-btns{
+        display: none;
+    }
+}
