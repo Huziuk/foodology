@@ -1,4 +1,4 @@
-@import '../../shared/styles/variables';
+@import "../../shared/styles/variables";
 // ? Fonts
 /* poppins-regular - latin */
 @font-face {
@@ -235,18 +235,18 @@ p {
     letter-spacing: 0.5px;
     color: #1565d8;
     cursor: pointer;
-    transition: all .2s ease;
-    &:hover{
+    transition: all 0.2s ease;
+    &:hover {
         color: #0849a5;
     }
 }
 
-.close-btn{
+.close-btn {
     width: 18px;
     height: 18px;
     outline: none;
     border: none;
-    background: url('../../../assets/images/close.svg') center/cover no-repeat transparent;
+    background: url("../../../assets/images/close.svg") center/cover no-repeat transparent;
 }
 
 // Text Input
@@ -296,11 +296,11 @@ p {
     width: 360px;
 }
 
-.control-select{
+.control-select {
     width: 100%;
     appearance: none;
     padding-right: 47px;
-    background-image: url('../../../assets/images/select-row.svg');
+    background-image: url("../../../assets/images/select-row.svg");
     background-position: 91%;
     background-repeat: no-repeat;
 }
@@ -371,6 +371,67 @@ p {
     }
 }
 
+.foods-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 365px;
+    height: 425px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #dfe1e6;
+    box-sizing: border-box;
+    border-radius: 20px;
+    .foods-card-head{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #3333331a;;
+        h5{
+            font-weight: 500;
+            font-size: 30px;
+        }
+        h2{
+            display: flex;
+            align-items: flex-end;
+            p{
+                font-weight: normal !important;
+            }
+        }
+    }
+    .head-photo{
+        width: 110px;
+        height: 110px;
+        margin-right: 20px;
+        border-radius: 20px;
+        background-color: $primary;
+    }
+    li{
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 10px;
+        &::after{
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #666;
+            position: absolute;
+            top: 12px;
+            left: 0;
+        }
+    }
+    
+    button{
+        min-height: 58px;
+        padding: 0px 45px;
+        margin: 10px auto;
+        border-radius: 30px;
+    }
+}
+
 @media screen and (max-width: 414px) {
     .wrapper {
         width: 100%;
@@ -394,6 +455,16 @@ p {
         h3 {
             margin: 25px 0 20px;
             font-size: 36px;
+        }
+    }
+    .foods-card{
+        width: 100%;
+        margin-bottom: 50px;
+        .foods-card-head{
+            h5{
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
         }
     }
 }

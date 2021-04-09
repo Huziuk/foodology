@@ -12,4 +12,13 @@ export class PricingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggleQuestion(count: number): void{
+    let elem = document.querySelector(`.question-item:nth-child(${count})`) as HTMLDivElement
+    if (elem.style.height == 'auto'){
+      elem.style.height = '98px'
+    } else {
+      elem.style.height = 'auto'
+    }
+  }
+
 }
