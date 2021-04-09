@@ -1,5 +1,5 @@
-@import '../../shared/styles/reset';
 @import '../../shared/styles/base';
+@import '../../shared/styles/variables';
 
 header{
     //position: sticky;
@@ -27,7 +27,7 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f3f3f3da;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.952) 22%, rgba(255, 202, 187, 0.979) 100%);
     position: absolute;
     top: 0;
     left: 0;
@@ -105,6 +105,12 @@ nav a{
     padding: 0;
     background: url('../../../assets/images/bag.svg') center/18px no-repeat #FE724C;
     border-radius: 15px;
+}
+
+.close-btn{
+    position: absolute;
+    top: 30px;
+    right: 30px;
 }
 
 @media screen and (max-width: 414px) {

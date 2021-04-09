@@ -1,19 +1,4 @@
-// ? Variables
-$primary: #fe724c;
-$primaryHover: #e25b37;
-$secondary: #26120c;
-$titleText: #333;
-$mainText: #707070;
-$outline: #dfe1e6;
-$form: #fafbfc;
-$whiteText: #fff;
-$disabled: #c7c7c7;
-$focus: #f23400;
-$placeholder: #33333366;
-$success: #27ae60;
-$warning: #f2c94c;
-$danger: #eb5757;
-$labelColor: #5a7184;
+@import '../../shared/styles/variables';
 // ? Fonts
 /* poppins-regular - latin */
 @font-face {
@@ -256,11 +241,20 @@ p {
     }
 }
 
+.close-btn{
+    width: 18px;
+    height: 18px;
+    outline: none;
+    border: none;
+    background: url('../../../assets/images/close.svg') center/cover no-repeat transparent;
+}
+
 // Text Input
 .control,
 .control-success,
 .control-warning,
-.control-danger {
+.control-danger,
+.control-select {
     height: 56px;
     padding-left: 20px;
     outline: none;
@@ -300,6 +294,15 @@ p {
     display: flex;
     flex-direction: column;
     width: 360px;
+}
+
+.control-select{
+    width: 100%;
+    appearance: none;
+    padding-right: 47px;
+    background-image: url('../../../assets/images/select-row.svg');
+    background-position: 91%;
+    background-repeat: no-repeat;
 }
 
 .label-name {

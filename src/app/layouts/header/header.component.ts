@@ -15,6 +15,11 @@ export class HeaderComponent implements OnInit {
 
   toggleBurger(): void {
     this.isVisibleburger = !this.isVisibleburger
+    if (this.isVisibleburger){
+      document.querySelector('body').style.overflow = 'hidden'
+    } else {
+      document.querySelector('body').style.overflow = 'auto'
+    }
   }
 
 }
