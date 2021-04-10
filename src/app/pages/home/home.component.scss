@@ -153,6 +153,9 @@
 }
 
 @media screen and (max-width: 414px) {
+    .menus{
+        margin-top: 80px;
+    }
     .article-preview {
         &::before {
             top: 475px;
