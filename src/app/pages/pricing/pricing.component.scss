@@ -18,9 +18,13 @@
 }
 
 .question {
-    padding: 100px 0;
-    margin-bottom: 150px;
+    padding: 100px 0 450px;
+    //margin-bottom: 150px;
     background: #26120c;
+}
+
+.feedback{
+    margin-top: -350px;
 }
 
 .question-title {
@@ -110,6 +114,9 @@
     .question{
         padding: 30px 0;
         margin-bottom: 80px;
+    }
+    .feedback{
+        margin: 0;
     }
     .question-inner{
         padding: 0px 30px;
