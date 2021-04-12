@@ -13,12 +13,20 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent },
   { path: 'pricing', component: PricingComponent },
   { path: 'about', component: AboutComponent },
   { path: 'foods', component: FoodsComponent },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      //{ path: '', pathMatch: 'full', redirectTo: 'category' },
+      { path: 'category', component: AdminCategoryComponent },
+      { path: 'product', component: AdminProductComponent },
+      { path: 'orders', component: AdminOrdersComponent },
+    ]
+  },
 ];
 
 @NgModule({

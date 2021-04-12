@@ -316,7 +316,7 @@ p {
 
 // Card
 
-.card {
+.card, .card-long {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -342,6 +342,10 @@ p {
     p {
         text-align: center;
     }
+}
+
+.card-long{
+    width: 720px;
 }
 
 .outline-card {

@@ -100,6 +100,53 @@
     }
 }
 
+.commitment {
+    margin-top: 180px;
+    margin-bottom: 150px;
+}
+
+.commitment-header {
+    p {
+        margin-top: 25px;
+        width: 500px;
+    }
+}
+
+.commitment-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    .card-long {
+        .card-ico {
+            background: url("../../../assets/images/star.svg") center/30px no-repeat $primary;
+        }
+    }
+}
+
+.delivery {
+    width: 397px;
+    p:nth-child(1) {
+        margin: 20px 0px 30px;
+    }
+    p:nth-child(2) {
+        margin: 6px 0px;
+    }
+    button {
+        margin-top: 40px;
+    }
+    span {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 54px;
+        line-height: 150%;
+        span {
+            font-size: 20px;
+        }
+    }
+}
+
+
 @media screen and (max-width: 414px) {
     .bundle {
         padding: 0px 30px;
@@ -129,6 +176,41 @@
     .question-item-top{
         p{
             font-size: 18px;
+        }
+    }
+    .commitment {
+        padding: 0px 30px;
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    .commitment-header {
+        margin-bottom: 30px;
+        p {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+    .commitment-footer {
+        flex-wrap: wrap;
+        justify-content: center;
+        .card-long {
+            margin-bottom: 50px;
+        }
+        .delivery {
+            button {
+                display: inline;
+                height: auto;
+                padding: 0;
+                margin-top: 22px;
+                border: none;
+                &:hover {
+                    background-color: transparent;
+                    border: none;
+                }
+                &:focus {
+                    color: $primaryHover;
+                }
+            }
         }
     }
 }
