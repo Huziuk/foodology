@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-product',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-product.component.scss']
 })
 export class AdminProductComponent implements OnInit {
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
 
-  constructor() { }
+  constructor(
+    private storage: AngularFireStorage
+  ) { }
 
   ngOnInit(): void {
   }

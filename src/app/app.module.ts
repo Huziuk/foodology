@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -18,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SubscribeComponent } from './layouts/subscribe/subscribe.component';
 import { FeedbackComponent } from './layouts/feedback/feedback.component';
 import { MenustodayComponent } from './layouts/menustoday/menustoday.component';
+import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +41,16 @@ import { MenustodayComponent } from './layouts/menustoday/menustoday.component';
     AdminOrdersComponent,
     SubscribeComponent,
     FeedbackComponent,
-    MenustodayComponent
+    MenustodayComponent,
+    AdminBundleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

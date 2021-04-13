@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "foodology-b42eb": {
+      "hosting": {
+        "foodology": [
+          "foodology-b42eb"
+        ]
+      }
+    }
+  }
+}

@@ -23,8 +23,13 @@
     background: #26120c;
 }
 
-.feedback{
+.feedback-wrapper{
     margin-top: -350px;
+    ::ng-deep{
+        .feedback{
+            color: red !important;
+        }
+    }
 }
 
 .question-title {
