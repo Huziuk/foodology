@@ -11,6 +11,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -21,10 +23,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'admin', component: AdminComponent, children: [
-      //{ path: '', pathMatch: 'full', redirectTo: 'category' },
+      { path: '', pathMatch: 'full', redirectTo: 'category' },
       { path: 'category', component: AdminCategoryComponent },
       { path: 'product', component: AdminProductComponent },
       { path: 'orders', component: AdminOrdersComponent },
+      { path: 'bundle', component: AdminBundleComponent },
     ]
   },
 ];

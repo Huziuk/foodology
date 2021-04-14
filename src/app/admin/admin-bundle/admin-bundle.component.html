@@ -1,1 +1,36 @@
-<p>admin-bundle works!</p>
+<form class="breakfast" [formGroup]="breakfastForm" (ngSubmit)="save()">
+    <h2>Breakfast</h2>
+    <label class="mr-3">
+        <h5>Price</h5>
+        <input type="text" class="form-control mb-3" formControlName="price">
+    </label>
+    <label class="mr-3">
+        <h5>First Food</h5>
+        <input type="text" class="form-control mb-3" formControlName="firstFood">
+    </label>
+    <label class="mr-3">
+        <h5>Second Food</h5>
+        <input type="text" class="form-control mb-3" formControlName="secondFood">
+    </label>
+    <label class="mr-3">
+        <h5>Dessert</h5>
+        <input type="text" class="form-control mb-3" formControlName="dessert">
+    </label>
+    <button type="submit" class="btn btn-success">Save</button>
+    <ng-container *ngIf="!imageStatus; else elseTemplate">
+        <div class="custom-file">
+            <input (change)="uploadFile($event)" type="file" class="" id="urlImage"
+                required>
+        </div>
+        <div class="progress mt-3 mb-3">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                [style.width]="(uploadPercent | async) + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+        <div class="image mb-3">
+            <img [src]="breakfastImage" width="150px" alt="">
+            <i (click)="deleteImage(breakfastImage)" class="bi bi-trash-fill ml-4" style="cursor: pointer;"></i>
+        </div>
+    </ng-template>
+</form>

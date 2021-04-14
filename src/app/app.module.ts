@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReactiveFormsModule } from '@angular/forms';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { ToastrModule } from 'ngx-toast';
+
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -11,10 +15,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
-import { AdminComponent } from './admin/admin.component';
-import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -23,6 +23,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { SubscribeComponent } from './layouts/subscribe/subscribe.component';
 import { FeedbackComponent } from './layouts/feedback/feedback.component';
 import { MenustodayComponent } from './layouts/menustoday/menustoday.component';
+
+import { AdminComponent } from './admin/admin.component';
+import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
 
 @NgModule({
@@ -48,9 +53,12 @@ import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.componen
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    //BrowserAnimationsModule, // required animations module
+    //ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,13 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '../../shared/styles/variables';
+
+*{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.breakfast{
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 0 rgb(219, 218, 218);
+}
