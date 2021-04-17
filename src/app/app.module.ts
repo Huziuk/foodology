@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { ToastrModule } from 'ngx-toast';
 
@@ -57,6 +58,7 @@ import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    HttpClientModule,
     //BrowserAnimationsModule, // required animations module
     //ToastrModule.forRoot(), // ToastrModule added
   ],

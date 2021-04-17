@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { IBundle } from 'src/app/shared/interfaces/bundle.interface';
+import { BundleService } from 'src/app/shared/services/bundle/bundle.service';
 
 @Component({
   selector: 'app-pricing',
@@ -6,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pricing.component.scss']
 })
 export class PricingComponent implements OnInit {
+  bundles: Array<any> = [];
 
-  constructor() { }
+  constructor(
+    private bundleService: BundleService
+  ) { }
 
   ngOnInit(): void {
+    this.getBundles()
+  }
+
+  getBundles(): void {
+    this.bundleService.firebaseBundle().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() as object })
+        )
+      )
+    ).subscribe(data => {
+      this.bundles = data;
+    });
   }
 
   toggleQuestion(count: number): void{

@@ -1,5 +1,23 @@
-<form class="breakfast" [formGroup]="breakfastForm" (ngSubmit)="save()">
-    <h2>Breakfast</h2>
+<!--<form class="btn-group mb-5" role="group" aria-label="Basic radio toggle button group">
+    <input (click)="log()" type="radio" value="breakfast" name="radio" class="btn-check" id="btnradio1"
+        autocomplete="off" checked>
+    <label class="btn btn-outline-primary" for="btnradio1">Breakfast</label>
+    <input (click)="log()" type="radio" value="lunch" name="radio" class="btn-check" id="btnradio2"
+        autocomplete="off">
+    <label class="btn btn-outline-primary" for="btnradio2">Lunch</label>
+    <input (click)="log()" type="radio" value="dinner" name="radio" class="btn-check" id="btnradio3"
+        autocomplete="off">
+    <label class="btn btn-outline-primary" for="btnradio3">Dinner</label>
+</form>-->
+<div class="text-center">
+    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+        <button type="button" (click)="changeForm('Breakfast')" class="btn btn-primary">Breakfast</button>
+        <button type="button" (click)="changeForm('Lunch')" class="btn btn-primary">Lunch</button>
+        <button type="button" (click)="changeForm('Dinner')" class="btn btn-primary">Dinner</button>
+    </div>
+</div>
+<form class="breakfast" [formGroup]="bundleForm" (ngSubmit)="save()">
+    <h2>{{ formName }}</h2>
     <label class="mr-3">
         <h5>Price</h5>
         <input type="text" class="form-control mb-3" formControlName="price">
@@ -19,8 +37,7 @@
     <button type="submit" class="btn btn-success">Save</button>
     <ng-container *ngIf="!imageStatus; else elseTemplate">
         <div class="custom-file">
-            <input (change)="uploadFile($event)" type="file" class="" id="urlImage"
-                required>
+            <input (change)="uploadFile($event)" type="file" class="" id="urlImage" required>
         </div>
         <div class="progress mt-3 mb-3">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
@@ -29,8 +46,8 @@
     </ng-container>
     <ng-template #elseTemplate>
         <div class="image mb-3">
-            <img [src]="breakfastImage" width="150px" alt="">
-            <i (click)="deleteImage(breakfastImage)" class="bi bi-trash-fill ml-4" style="cursor: pointer;"></i>
+            <div class="img" [style.backgroundImage]="'url('+imageUrl+')'"></div>
+            <i (click)="deleteImage(breakfastImage)" class="bi bi-trash-fill" style="cursor: pointer;"></i>
         </div>
     </ng-template>
 </form>

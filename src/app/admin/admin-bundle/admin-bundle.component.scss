@@ -1,13 +1,34 @@
 @import "~bootstrap/dist/css/bootstrap.css";
-@import '../../shared/styles/variables';
+@import "../../shared/styles/variables";
 
-*{
+* {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.breakfast{
+.breakfast {
     margin-bottom: 50px;
     padding: 20px;
     border-radius: 25px;
     box-shadow: 0 0 10px 0 rgb(219, 218, 218);
 }
+
+.img {
+    width: 110px;
+    height: 110px;
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid #dbdbdb;
+}
+
+// width: 110px;
+//        height: 110px;
+//        margin-right: 20px;
+//        border-radius: 20px;
+//        background-color: $primary;
+//        background-position: center;
+//        background-repeat: no-repeat;
+//        background-size: cover;

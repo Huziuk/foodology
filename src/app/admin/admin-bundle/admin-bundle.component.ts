@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { IBundle } from 'src/app/shared/interfaces/bundle.interface';
+import { Bundle } from 'src/app/shared/models/bundle.model';
 import { BundleService } from 'src/app/shared/services/bundle/bundle.service';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-admin-bundle',
@@ -10,11 +14,14 @@ import { BundleService } from 'src/app/shared/services/bundle/bundle.service';
   styleUrls: ['./admin-bundle.component.scss']
 })
 export class AdminBundleComponent implements OnInit {
-  breakfastForm: FormGroup;
+  bundles: Array<any> = []
+  bundleForm: FormGroup;
+  formName: string = 'Breakfast';
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
-  breakfastImage: string;
+  imageUrl: string;
   imageStatus = false;
+  bundleID: string;
 
   constructor(
     private fb: FormBuilder,
@@ -23,33 +30,34 @@ export class AdminBundleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initBreakfastForm(),
-    this.bundleService.getBundle()
+    this.initForm();
+    this.getFireBundle()
   }
 
-  initBreakfastForm(): void {
-    this.breakfastForm = this.fb.group({
-      price: [null, [Validators.required]],
-      firstFood: [null, [Validators.required]],
-      secondFood: [null, [Validators.required]],
-      dessert: [null, [Validators.required]],
-    })
+  getFireBundle(): void {
+    this.bundleService.firebaseBundle().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() as object })
+        )
+      )
+    ).subscribe(data => {
+      this.bundles = data;
+      this.changeForm(this.formName)
+    });
   }
 
-  validByControl(control: string): any {
-    if (this.breakfastForm.controls[control].untouched) {
-      return true
+  save(): void {
+    const bun = {
+      ...this.bundleForm.value,
+      category: this.formName,
+      image: this.imageUrl,
+      id: this.bundleID
     }
-    return this.breakfastForm.controls[control].valid;
-  }
-
-  save(): void{
-    console.log(this.breakfastForm.value);
-    const bundle = {
-      ...this.breakfastForm.value,
-      image: this.breakfastImage
-    }
-    this.bundleService.addBundle(bundle)
+    this.bundleService.firebaseBundle().doc(this.bundleID).update(bun).then(
+      () => {this.getFireBundle()},
+      err => {console.log(err)}
+    )
   }
 
   uploadFile(event) {
@@ -60,22 +68,54 @@ export class AdminBundleComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();
     task.then(image => {
       this.storage.ref(`images/${image.metadata.name}`).getDownloadURL().subscribe(url => {
-        this.breakfastImage = url,
+        this.imageUrl = url
         this.imageStatus = true
       })
     })
   }
+  
+  //deleteImage(urlImage: string): void {
+  //  this.storage.refFromURL(urlImage).delete().subscribe(
+  //    () => {
+  //      this.uploadPercent = null
+  //    },
+  //    err => {
+  //      console.log(err);
+  //    }
+  //  )
+  //}
 
-  deleteImage(urlImage: string): void {
-    this.storage.refFromURL(urlImage).delete().subscribe(
-      () => {
-        this.imageStatus = false;
-        this.breakfastImage = null
-        this.uploadPercent = null
-      },
-      err => {
-        console.log(err);
-      }
-    )
+  validByControl(control: string): any {
+    if (this.bundleForm.controls[control].untouched) {
+      return true
+    }
+    return this.bundleForm.controls[control].valid;
   }
+
+  initForm(): void {
+    this.bundleForm = this.fb.group({
+      price: [null, [Validators.required]],
+      firstFood: [null, [Validators.required]],
+      secondFood: [null, [Validators.required]],
+      dessert: [null, [Validators.required]],
+    })
+  }
+
+  changeForm(name: string): void {
+    this.formName = name;
+    this.bundles.forEach(bun => {
+      if (bun.category === this.formName){
+        this.bundleForm = this.fb.group({
+          price: [bun.price, [Validators.required]],
+          firstFood: [bun.firstFood, [Validators.required]],
+          secondFood: [bun.secondFood, [Validators.required]],
+          dessert: [bun.dessert, [Validators.required]],
+        })
+        this.imageUrl = bun.image;
+        this.imageStatus = true;
+        this.bundleID = bun.id;
+      }
+    })
+  }
+
 }

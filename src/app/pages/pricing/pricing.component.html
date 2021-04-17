@@ -7,53 +7,19 @@
                 <p>Select your suitable catering bundles easy</p>
             </div>
             <div class="bundle-cards">
-                <div class="foods-card">
+                <div class="foods-card" *ngFor="let b of bundles; let i=index">
                     <div class="foods-card-head">
-                        <div class="head-photo"></div>
+                        <div class="head-photo" [style.backgroundImage]="'url('+b.image+')'" ></div>
                         <div class="head-text">
-                            <h5>Breakfast</h5>
-                            <h2>$15 <p>/ pcs</p></h2>
+                            <h5>{{ b.category }}</h5>
+                            <h2>${{ b.price }} <p>/ pcs</p></h2>
                         </div>
                     </div>
                     <div class="foods-card-content">
                         <ul>
-                            <li><p>Lorem Ipsum Dolor Sit Amet</p></li>
-                            <li><p>Ipmo Doj Samat</p></li>
-                            <li><p>Sed do eiusmod tempor</p></li>
-                        </ul>
-                    </div>
-                    <button class="primary-large">Add</button>
-                </div>
-                <div class="foods-card">
-                    <div class="foods-card-head">
-                        <div class="head-photo"></div>
-                        <div class="head-text">
-                            <h5>Lunch</h5>
-                            <h2>$15 <p>/ pcs</p></h2>
-                        </div>
-                    </div>
-                    <div class="foods-card-content">
-                        <ul>
-                            <li><p>Lorem Ipsum Dolor Sit Amet</p></li>
-                            <li><p>Ipmo Doj Samat</p></li>
-                            <li><p>Sed do eiusmod tempor</p></li>
-                        </ul>
-                    </div>
-                    <button class="primary-large">Add</button>
-                </div>
-                <div class="foods-card">
-                    <div class="foods-card-head">
-                        <div class="head-photo"></div>
-                        <div class="head-text">
-                            <h5>Dinner</h5>
-                            <h2>$15 <p>/ pcs</p></h2>
-                        </div>
-                    </div>
-                    <div class="foods-card-content">
-                        <ul>
-                            <li><p>Lorem Ipsum Dolor Sit Amet</p></li>
-                            <li><p>Ipmo Doj Samat</p></li>
-                            <li><p>Sed do eiusmod tempor</p></li>
+                            <li><p>{{ b.firstFood }}</p></li>
+                            <li><p>{{ b.secondFood }}</p></li>
+                            <li><p>{{ b.dessert }}</p></li>
                         </ul>
                     </div>
                     <button class="primary-large">Add</button>
