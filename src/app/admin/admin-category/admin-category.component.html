@@ -10,14 +10,16 @@
         </button>
     </div>
     <div class="modal-body">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">urlName</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter urlName">
-        </div>
+        <form [formGroup]="categoryForm">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">urlName</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter urlName" formControlName="urlName">
+            </div>
+        </form>
     </div>
 </ng-template>
 <table class="table mb-3 mt-3">

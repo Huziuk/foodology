@@ -8,15 +8,10 @@ import { IBundle } from '../../interfaces/bundle.interface';
   providedIn: 'root'
 })
 export class BundleService {
-  bundleArr = []
-  url: string;
 
   constructor(
     private db: AngularFirestore,
-    private http: HttpClient
-  ) {
-    this.url = 'http://localhost:3000/bundles'
-  }
+  ) { }
 
   firebaseBundle(): AngularFirestoreCollection<any> {
     return this.db.collection('bundle')
