@@ -1,1 +1,12 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+@media screen and (max-width: 414px){
+    .content {
+        flex-wrap: wrap;
+    }
+    .btn-group-vertical{
+        margin-bottom: 20px;
+    }
+
+}

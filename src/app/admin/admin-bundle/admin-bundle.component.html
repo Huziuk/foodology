@@ -1,41 +1,40 @@
-<!--<form class="btn-group mb-5" role="group" aria-label="Basic radio toggle button group">
-    <input (click)="log()" type="radio" value="breakfast" name="radio" class="btn-check" id="btnradio1"
-        autocomplete="off" checked>
-    <label class="btn btn-outline-primary" for="btnradio1">Breakfast</label>
-    <input (click)="log()" type="radio" value="lunch" name="radio" class="btn-check" id="btnradio2"
-        autocomplete="off">
-    <label class="btn btn-outline-primary" for="btnradio2">Lunch</label>
-    <input (click)="log()" type="radio" value="dinner" name="radio" class="btn-check" id="btnradio3"
-        autocomplete="off">
-    <label class="btn btn-outline-primary" for="btnradio3">Dinner</label>
-</form>-->
 <div class="text-center">
     <div class="btn-group mb-3" role="group" aria-label="Basic example">
-        <button type="button" (click)="changeForm('Breakfast')" class="btn btn-primary">Breakfast</button>
-        <button type="button" (click)="changeForm('Lunch')" class="btn btn-primary">Lunch</button>
-        <button type="button" (click)="changeForm('Dinner')" class="btn btn-primary">Dinner</button>
+        <button type="button" (click)="changeForm('Breakfast')" class="btn btn-light">Breakfast</button>
+        <button type="button" (click)="changeForm('Lunch')" class="btn btn-light">Lunch</button>
+        <button type="button" (click)="changeForm('Dinner')" class="btn btn-light">Dinner</button>
     </div>
 </div>
 <form class="breakfast" [formGroup]="bundleForm" (ngSubmit)="save()">
     <h2>{{ formName }}</h2>
-    <label class="mr-3">
-        <h5>Price</h5>
-        <input type="text" class="form-control mb-3" formControlName="price">
-    </label>
-    <label class="mr-3">
-        <h5>First Food</h5>
-        <input type="text" class="form-control mb-3" formControlName="firstFood">
-    </label>
-    <label class="mr-3">
-        <h5>Second Food</h5>
-        <input type="text" class="form-control mb-3" formControlName="secondFood">
-    </label>
-    <label class="mr-3">
-        <h5>Dessert</h5>
-        <input type="text" class="form-control mb-3" formControlName="dessert">
-    </label>
-    <button type="submit" class="btn btn-success">Save</button>
-    <ng-container *ngIf="!imageStatus; else elseTemplate">
+    <div class="form-content">
+        <label>
+            <h5>Price</h5>
+            <input type="text" class="form-control  mb-3"  [ngClass]="{'danger': !validByControl('price')}" formControlName="price">
+        </label>
+        <label>
+            <h5>First Food</h5>
+            <input type="text" class="form-control mb-3" formControlName="firstFood" [ngClass]="{'danger': !validByControl('firstFood')}">
+        </label>
+        <label>
+            <h5>Second Food</h5>
+            <input type="text" class="form-control mb-3" formControlName="secondFood" [ngClass]="{'danger': !validByControl('secondFood')}">
+        </label>
+        <label>
+            <h5>Dessert</h5>
+            <input type="text" class="form-control mb-3" formControlName="dessert" [ngClass]="{'danger': !validByControl('dessert')}">
+        </label>
+            <div class="image-wrapper">
+                <div class="image" *ngIf="imageStatus">
+                    <div class="img" [style.backgroundImage]="'url('+imageUrl+')'"></div>
+                    <div class="delete-img" (click)="deleteImage()">
+                        <i class="bi bi-trash-fill" style="cursor: pointer;"></i>
+                    </div>
+                </div>
+            </div>
+        <button type="submit" class="btn btn-success save" [disabled]="!saveStatus">Save</button>
+    </div>
+    <ng-container *ngIf="!imageStatus;">
         <div class="custom-file">
             <input (change)="uploadFile($event)" type="file" class="" id="urlImage" required>
         </div>
@@ -44,10 +43,4 @@
                 [style.width]="(uploadPercent | async) + '%'" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     </ng-container>
-    <ng-template #elseTemplate>
-        <div class="image mb-3">
-            <div class="img" [style.backgroundImage]="'url('+imageUrl+')'"></div>
-            <i (click)="deleteImage(breakfastImage)" class="bi bi-trash-fill" style="cursor: pointer;"></i>
-        </div>
-    </ng-template>
 </form>

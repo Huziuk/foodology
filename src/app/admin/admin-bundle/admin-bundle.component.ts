@@ -22,6 +22,7 @@ export class AdminBundleComponent implements OnInit {
   imageUrl: string;
   imageStatus = false;
   bundleID: string;
+  saveStatus = true;
 
   constructor(
     private fb: FormBuilder,
@@ -48,16 +49,26 @@ export class AdminBundleComponent implements OnInit {
   }
 
   save(): void {
-    const bun = {
-      ...this.bundleForm.value,
-      category: this.formName,
-      image: this.imageUrl,
-      id: this.bundleID
+    if(this.bundleForm.valid && this.imageStatus){
+      const bun = {
+        ...this.bundleForm.value,
+        category: this.formName,
+        image: this.imageUrl,
+        id: this.bundleID
+      }
+      this.bundleService.firebaseBundle().doc(this.bundleID).update(bun).then(
+        () => { 
+          this.getFireBundle()
+          alert('Save success')
+        },
+        err => { 
+          console.log(err) 
+          alert('Save error!')
+        }
+      )
+    } else {
+      alert('Invalid form or no image')
     }
-    this.bundleService.firebaseBundle().doc(this.bundleID).update(bun).then(
-      () => {this.getFireBundle()},
-      err => {console.log(err)}
-    )
   }
 
   uploadFile(event) {
@@ -69,21 +80,25 @@ export class AdminBundleComponent implements OnInit {
     task.then(image => {
       this.storage.ref(`images/${image.metadata.name}`).getDownloadURL().subscribe(url => {
         this.imageUrl = url
-        this.imageStatus = true
+        this.imageStatus = true;
+        this.saveStatus = true;
       })
     })
   }
   
-  //deleteImage(urlImage: string): void {
-  //  this.storage.refFromURL(urlImage).delete().subscribe(
-  //    () => {
-  //      this.uploadPercent = null
-  //    },
-  //    err => {
-  //      console.log(err);
-  //    }
-  //  )
-  //}
+  deleteImage(): void {
+    this.storage.refFromURL(this.imageUrl).delete().subscribe(
+      () => {
+        this.uploadPercent = null;
+        this.imageStatus = false;
+        this.imageUrl = null;
+        this.saveStatus = false;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
 
   validByControl(control: string): any {
     if (this.bundleForm.controls[control].untouched) {
@@ -112,8 +127,9 @@ export class AdminBundleComponent implements OnInit {
           dessert: [bun.dessert, [Validators.required]],
         })
         this.imageUrl = bun.image;
-        this.imageStatus = true;
+        this.imageUrl ? this.imageStatus = true : this.imageStatus = false
         this.bundleID = bun.id;
+        this.saveStatus = true
       }
     })
   }

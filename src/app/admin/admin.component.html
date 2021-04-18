@@ -1,12 +1,12 @@
 <div class="container-fluid mb-3 mt-3">
     <div class="row">
         <div class="col">
-            <div class="d-flex align-items-start">
+            <div class="content d-flex align-items-start">
                 <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <a [routerLink]="[ 'category' ]" routerLinkActive="active" class="btn btn-primary">Category</a>
-                    <a [routerLink]="[ 'product' ]" routerLinkActive="active" class="btn btn-primary">Product</a>
-                    <a [routerLink]="[ 'orders' ]" routerLinkActive="active" class="btn btn-primary">Orders</a>
-                    <a [routerLink]="[ 'bundle' ]" routerLinkActive="active" class="btn btn-primary">Bundle</a>
+                    <a [routerLink]="[ 'category' ]" routerLinkActive="active" class="btn btn-secondary">Category</a>
+                    <a [routerLink]="[ 'product' ]" routerLinkActive="active" class="btn btn-secondary">Product</a>
+                    <a [routerLink]="[ 'orders' ]" routerLinkActive="active" class="btn btn-secondary">Orders</a>
+                    <a [routerLink]="[ 'bundle' ]" routerLinkActive="active" class="btn btn-secondary">Bundle</a>
                 </div>
                 <div class="tab-content col" id="v-pills-tabContent">
                     <router-outlet></router-outlet>
