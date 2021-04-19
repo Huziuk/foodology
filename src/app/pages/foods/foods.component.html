@@ -67,8 +67,9 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et .
                             </p>
+                            <h2>15$</h2>
                             <div class="product-footer-btns">
-                                <button class="outline-primary-medium">See More</button>
+                                <button class="outline-primary-medium" (click)="openModal(template)">See More</button>
                                 <button class="primary-medium">Add</button>
                             </div>
                         </div>
@@ -88,11 +89,34 @@
 
 
 
-
-
-<!--<select class="control-select">
-    <option>Choose an option</option>
-    <option>option 1</option>
-    <option>option 2</option>
-    <option>option 3</option>
-</select>-->
+<ng-template #template>
+    <div class="details">
+        <button type="button" class="close-btn" aria-label="Close" (click)="modalRef.hide()">
+        </button>
+        <div class="details-photos">
+            <div class="details-main-photo"></div>
+            <div class="details-footer-photos">
+                <div class="details-footer-photo"></div>
+                <div class="details-footer-photo"></div>
+                <div class="details-footer-photo"></div>
+            </div>
+        </div>
+        <div class="description">
+            <h4>Chicken Parmesan</h4>
+            <p class="primary-text">Calories : 70gr - Chicken</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et .
+            </p>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.
+            </p>
+        </div>
+        <div class="card">
+            <h4>Ingredients</h4>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et .
+            </p>
+        </div>
+    </div>
+</ng-template>

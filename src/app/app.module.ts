@@ -30,6 +30,7 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.componen
     SubscribeComponent,
     FeedbackComponent,
     MenustodayComponent,
-    AdminBundleComponent
+    AdminBundleComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
