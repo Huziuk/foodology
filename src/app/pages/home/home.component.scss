@@ -23,6 +23,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+    margin-bottom: 150px;
 }
 
 .preview-left {
@@ -152,6 +153,62 @@
     margin-bottom: 150px;
 }
 
+@media screen and (max-width: 1215px) and (min-width: 1000){
+    .preview-left {
+        width: 440px;
+    }
+    .preview-right{
+        height: 510px;
+        &::after {
+            width: 535px;
+            height: 440px;
+            margin-top: 30px;
+            left: -50px;
+        }
+    }
+    .article-preview::before{
+        height: 510px;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 880px){
+    .preview-left {
+        width: 390px;
+    }
+    .preview-right{
+        height: 510px;
+        &::after {
+            width: 470px;
+            height: 390px;
+            margin-top: 50px;
+            left: -40px;
+        }
+    }
+}
+@media screen and (max-width: 880px) and (min-width: 414px){
+    .preview-left {
+        width: 340px;
+        .sup-title{
+            letter-spacing: 3px;
+        }
+        p{
+            margin: 20px 0 40px;
+        }
+    }
+    .preview-right{
+        height: 475px;
+        &::after {
+            width: 400px;
+            height: 325px;
+            margin-top: 65px;
+            left: -45px;
+        }
+    }
+    .article-preview::before{
+        height: 475px;
+    }
+}
+
 @media screen and (max-width: 414px) {
     .menus{
         margin-top: 80px;
@@ -165,6 +222,7 @@
     .preview {
         flex-wrap: wrap;
         padding: 0px 30px;
+        margin-bottom: 80px;
     }
     .preview-left {
         margin: 30px 0 40px;

@@ -21,6 +21,7 @@ import { PricingComponent } from './pages/pricing/pricing.component';
 import { AboutComponent } from './pages/about/about.component';
 import { FoodsComponent } from './pages/foods/foods.component';
 import { LoginComponent } from './pages/login/login.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 import { SubscribeComponent } from './layouts/subscribe/subscribe.component';
 import { FeedbackComponent } from './layouts/feedback/feedback.component';
 import { MenustodayComponent } from './layouts/menustoday/menustoday.component';
@@ -30,7 +31,6 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
-import { OrdersComponent } from './pages/orders/orders.component';
 
 @NgModule({
   declarations: [

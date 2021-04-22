@@ -1,12 +1,27 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 
+.btn-group{
+    display: none;
+    margin: 10px auto 30px;
+}
+
+.content{
+    height: 100vh;
+}
+
 @media screen and (max-width: 414px){
     .content {
-        flex-wrap: wrap;
+        flex-direction: column;
+        height: auto;
     }
     .btn-group-vertical{
         margin-bottom: 20px;
     }
-
+    .btn-group-vertical{
+        display: none;
+    }
+    .btn-group{
+        display: flex;
+    }
 }

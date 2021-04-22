@@ -1,48 +1,31 @@
-<div class="d-flex justify-content-end">
-<button type="button" class="btn btn-primary" (click)="openModal(template)"> Add </button>
-
+<div class="categories">
+    <div class="category" *ngFor="let c of categories">{{ c.name }}
+        <button type="button" class="close pull-right" (click)="deleteFireCategories(c.id)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <button type="button" class="btn btn-primary add-btn" (click)="openModal(template)"> Add </button>
 </div>
+
+
+<!-- Modal -->
 <ng-template #template>
     <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
+        <h4 class="modal-title pull-left">Add category</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form [formGroup]="categoryForm">
+        <form [formGroup]="categoryForm" (ngSubmit)="addFireCategories()">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name" formControlName="name">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter name"
+                    formControlName="name" [ngClass]="{'danger': !validByControl('name')}">
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">urlName</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter urlName" formControlName="urlName">
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success" [disabled]="!categoryForm.valid"> Add </button>
             </div>
         </form>
     </div>
 </ng-template>
-<table class="table mb-3 mt-3">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">UrlName</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-                <button class="btn btn-warning">Edit</button>
-            </td>
-            <td>
-                <button class="btn btn-danger">Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>

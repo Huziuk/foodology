@@ -12,7 +12,7 @@ export class CategoryService {
   ) { }
 
   firebaseCategories(): AngularFirestoreCollection<ICategory> {
-    return this.db.collection('categories')
+    return this.db.collection('category')
   }
 
 }

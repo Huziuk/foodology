@@ -5,6 +5,42 @@
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-button{
+.add-btn{
     font-family: 'Poppins';
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.categories{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #DFE1E6;
+}
+
+.category{
+    height: 38px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    padding: 0px 30px 0 10px;
+    border-radius: 20px;
+    border: 1px solid #DFE1E6;
+    background-color: #FAFBFC;
+    color: rgba(51, 51, 51, 0.7);;
+    position: relative;
+    button{
+        position: absolute;
+        right: 8px;
+        transition: all .2s ease;
+    }
+}
+
+.danger{
+    border-color: $danger;
 }

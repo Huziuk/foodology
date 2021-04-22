@@ -6,6 +6,7 @@ import { PricingComponent } from './pages/pricing/pricing.component';
 import { AboutComponent } from './pages/about/about.component';
 import { FoodsComponent } from './pages/foods/foods.component';
 import { LoginComponent } from './pages/login/login.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
@@ -15,16 +16,16 @@ import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.componen
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'pricing', component: PricingComponent },
   { path: 'about', component: AboutComponent },
   { path: 'foods', component: FoodsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'order', component: OrdersComponent },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: '', pathMatch: 'full', redirectTo: 'category' },
-      { path: 'category', component: AdminCategoryComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'product' },
       { path: 'product', component: AdminProductComponent },
       { path: 'orders', component: AdminOrdersComponent },
       { path: 'bundle', component: AdminBundleComponent },

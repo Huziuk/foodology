@@ -439,6 +439,32 @@ p {
     }
 }
 
+@media screen and (max-width: 1215px) and (min-width: 1000px) {
+    .wrapper {
+        width: 980px;
+    }
+    h1{
+        font-size: 54px;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 880px) {
+    .wrapper {
+        width: 860px;
+    }
+    h1{
+        font-size: 54px;
+    }
+}
+@media screen and (max-width: 880px) and (min-width: 414px) {
+    .wrapper {
+        width: 740px;
+    }
+    h1{
+        font-size: 48px;
+    }
+}
+
 @media screen and (max-width: 414px) {
     .wrapper {
         width: 100%;
