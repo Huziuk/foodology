@@ -249,6 +249,19 @@ p {
     background: url("../../../assets/images/close.svg") center/cover no-repeat transparent;
 }
 
+.close{
+    width: 10px;
+    height: 10px;
+    border: none;
+    outline: none;
+    background: url('../../../assets/images/close-cross.svg') center/cover no-repeat transparent;
+    opacity: .7;
+    transition: all .2s ease;
+    &:hover{
+        opacity: 1;
+    }
+}
+
 // Text Input
 .control,
 .control-success,

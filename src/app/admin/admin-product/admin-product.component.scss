@@ -1,0 +1,83 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "../../shared/styles/variables";
+
+* {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+button {
+    font-family: "Poppins";
+}
+
+.danger {
+    border-color: $danger;
+}
+
+textarea {
+    width: 100%;
+    resize: none !important;
+}
+
+.form-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputs,
+.images {
+    width: 49%;
+}
+
+.product-file {
+    width: 80px;
+    height: 80px;
+}
+
+.input__wrapper {
+    width: 106px;
+    height: 106px;
+    position: relative;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.input__file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.input__file-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: 1px solid #DFE1E6;
+    background: url('../../../assets/images/add.svg') center/35px no-repeat #eff0f1;
+    cursor: pointer;
+    transition: all .2s ease;
+    opacity: .8;
+    &:hover{
+        opacity: 1;
+    }
+}
+
+.photo{
+    width: 106px;
+    height: 106px;
+    margin-right: 15px;
+    border: 1px solid #DFE1E6;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+}
+
+.prod{
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 0 rgb(219, 218, 218);
+    input:disabled, textarea:disabled{
+        background-color: #fafafa;
+    }
+}

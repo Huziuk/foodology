@@ -5,11 +5,13 @@ export class Product implements IProduct {
     count: number;
     constructor(
         public category: ICategory,
+        public subCategory: ICategory,
         public name: string,
         public urlName: string,
         public description: string,
+        public ingredients: string,
         public weight: string,
-        public image: Array<string>,
+        public images: Array<string>,
         public price: number
     ) {
         this.count = 1

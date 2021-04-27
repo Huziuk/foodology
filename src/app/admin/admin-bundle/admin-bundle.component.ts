@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IBundle } from 'src/app/shared/interfaces/bundle.interface';
 import { Bundle } from 'src/app/shared/models/bundle.model';
 import { BundleService } from 'src/app/shared/services/bundle/bundle.service';
+import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
 
 
@@ -27,7 +28,8 @@ export class AdminBundleComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
-    private bundleService: BundleService
+    private bundleService: BundleService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -59,15 +61,15 @@ export class AdminBundleComponent implements OnInit {
       this.bundleService.firebaseBundle().doc(this.bundleID).update(bun).then(
         () => { 
           this.getFireBundle()
-          alert('Save success')
+          this.toastr.success('Save success')
         },
         err => { 
           console.log(err) 
-          alert('Save error!')
+          this.toastr.error('Save error')
         }
       )
     } else {
-      alert('Invalid form or no image')
+      this.toastr.error('Invalid form')
     }
   }
 

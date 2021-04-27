@@ -2,9 +2,10 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { map } from 'rxjs/operators';
-//import { ICategory } from 'src/app/shared/interfaces/category.interface';
-//import { Category } from 'src/app/shared/models/category.model';
+import { ICategory } from 'src/app/shared/interfaces/category.interface';
+import { Category } from 'src/app/shared/models/category.model';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-category',
@@ -20,6 +21,7 @@ export class AdminCategoryComponent implements OnInit {
     private modalService: BsModalService,
     private categoryService: CategoryService,
     private fb: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -52,11 +54,13 @@ export class AdminCategoryComponent implements OnInit {
       }
       this.categoryService.firebaseCategories().add(category).then(
         () => {
-          this.getFireCategories()
           this.modalRef.hide()
           this.categoryForm.reset()
+          this.toastr.success('Add category success')
+          this.getFireCategories()
         },
         err => {
+          this.toastr.error('Add category error')
           console.log(err);
         }
       )
@@ -64,7 +68,15 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   deleteFireCategories(id: string): void {
-    this.categoryService.firebaseCategories().doc(id).delete().then(() => this.getFireCategories()).catch(err => console.log(err))
+    this.categoryService.firebaseCategories().doc(id).delete()
+      .then(() => {
+        this.getFireCategories()
+        this.toastr.success('Delete category success')
+      })
+      .catch(err => {
+        this.toastr.error('Delete category error')
+        console.log(err)
+      })
   }
 
   validByControl(control: string): any {
@@ -77,6 +89,12 @@ export class AdminCategoryComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.categoryForm.reset()
     this.modalRef = this.modalService.show(template);
+    let modalContent = document.querySelector('.modal-content') as HTMLElement
+    modalContent.style.cssText =
+      `
+      border: none;
+      border-radius: 20px;
+    `
   }
 
 }

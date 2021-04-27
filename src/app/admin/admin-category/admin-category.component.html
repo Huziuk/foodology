@@ -1,7 +1,7 @@
+<h5 class="mb-3">Categories</h5>
 <div class="categories">
     <div class="category" *ngFor="let c of categories">{{ c.name }}
         <button type="button" class="close pull-right" (click)="deleteFireCategories(c.id)">
-            <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <button type="button" class="btn btn-primary add-btn" (click)="openModal(template)"> Add </button>
@@ -13,7 +13,6 @@
     <div class="modal-header">
         <h4 class="modal-title pull-left">Add category</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">

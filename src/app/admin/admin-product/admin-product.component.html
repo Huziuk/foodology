@@ -1,4 +1,130 @@
 <div class="category">
     <app-admin-category></app-admin-category>
 </div>
-<p>admin-product works!</p>
+
+<button type="button" class="btn btn-primary add-btn" (click)="openModal(template)"> Add product</button>
+
+<div class="products">
+    <div class="prod" *ngFor="let p of products; let i=index">
+        <div class="form-content">
+            <div class="inputs">
+                <div class="mb-3">
+                    <label  class="form-label">Name</label>
+                    <input type="text" class="form-control" [value]="p.name" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Price</label>
+                    <input type="text" class="form-control" [value]="p.price" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Weight</label>
+                    <input type="text" class="form-control" [value]="p.weight" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <input type="text" class="form-control" [value]="p.category" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Sub Category</label>
+                    <input type="text" class="form-control" [value]="p.subCategory" disabled>
+                </div>
+            </div>
+            <div class="images">
+                <div class="mb-4">
+                    <label class="form-label">Description</label>
+                    <textarea cols="30" rows="3" class="form-control" 
+                        [value]="p.description" disabled></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Ingredients</label>
+                    <textarea cols="30" rows="3" class="form-control" [value]="p.ingredients" disabled></textarea>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="photo me-0" [style.backgroundImage]="'url('+i+')'" *ngFor="let i of p.images"></div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="btn btn-warning me-3" (click)="editFireProduct(p)">Edit</div>
+            <div class="btn btn-danger" (click)="deletaFireProduct(p)">Delete</div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add product</h4>
+        <button type="button" class="btn-close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="productForm" (ngSubmit)="addFireProduct()">
+            <div class="form-content">
+                <div class="inputs">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name"
+                            formControlName="name" [ngClass]="{'danger': !validByControl('name')}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="price" placeholder="Enter price"
+                            formControlName="price" [ngClass]="{'danger': !validByControl('price')}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input type="text" class="form-control" id="weight" placeholder="Enter weight"
+                            formControlName="weight" [ngClass]="{'danger': !validByControl('weight')}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" formControlName="category">
+                            <!--<option selected disabled>Choose category</option>-->
+                            <option value="Main Course">Main Course</option>
+                            <option value="Dizzerts">Dizzerts</option>
+                            <option value="Apetizers">Apetizers</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subCategory" class="form-label">Sub Category</label>
+                        <select class="form-select" id="subCategory" formControlName="subCategory">
+                            <!--<option selected disabled>Choose sub category</option>-->
+                            <option [value]="c.name" *ngFor="let c of categories">{{c.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="images">
+                    <div class="mb-4">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="desc" cols="30" rows="3" class="form-control" id="exampleFormControlInput1"
+                            placeholder="Enter description" formControlName="description"
+                            [ngClass]="{'danger': !validByControl('description')}"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="ingtredients" class="form-label">Ingredients</label>
+                        <textarea name="desc" cols="30" rows="3" class="form-control" id="ingtredients"
+                            placeholder="Enter ingredients" formControlName="ingredients"
+                            [ngClass]="{'danger': !validByControl('ingredients')}"></textarea>
+                    </div>
+                    <div class="d-flex">
+                        <div class="photo" [style.backgroundImage]="'url('+i+')'" *ngFor="let i of images"></div>
+                        <div class="input__wrapper" *ngIf="!checkUpload()">
+                            <input name="file" type="file" name="file" id="input__file" class="input input__file" multiple (change)="uploadFile($event)">
+                            <label for="input__file" class="input__file-button">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button *ngIf="!editStatus" type="submit" class="btn btn-success" [disabled]="!productForm.valid"> Add </button>
+                <button *ngIf="editStatus" type="button" class="btn btn-success" [disabled]="!productForm.valid" (click)="saveFireProduct(p)"> Save </button>
+            </div>
+        </form>
+    </div>
+</ng-template>
