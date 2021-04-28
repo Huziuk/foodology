@@ -10,43 +10,29 @@
             <div class="menu-bottom">
                 <div class="menu-sidebar">
                     <div class="sidebar-btns">
-                        <button class="sidebar-btn active-btn">Main Course</button>
-                        <button class="sidebar-btn">Dizzerts</button>
-                        <button class="sidebar-btn">Appetizers</button>
+                        <button class="sidebar-btn" (click)="selectMainCat('Main Course')">Main Course</button>
+                        <button class="sidebar-btn" (click)="selectMainCat('Dizzerts')">Dizzerts</button>
+                        <button class="sidebar-btn" (click)="selectMainCat('Appetizers')">Appetizers</button>
                     </div>
-                    <div class="sidebar-footer">
+                    <!--<div class="sidebar-footer">
                         <span>Qt.</span>
                         <div class="counter">
                             <button class="minus"></button>
                             <span>12</span>
                             <button class="plus"></button>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="sidebar-right">
-                        <div class="choose">
-                            <select class="control-select">
-                                <option disabled selected>Meat Dishes</option>
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
+                        <form [formGroup]="subCatForm" class="choose" >
+                            <select formControlName="cat" (change)="selectCat()" class="control-select">
+                                <option value="All" selected>All</option>
+                                <option [value]="c.name" *ngFor="let c of categories">{{c.name}}</option>
                             </select>
-                        </div>
+                        </form>
                         <div class="menu-list">
-                            <div class="list-item active-item">
-                                <div class="item-img"></div>
-                                <div class="item-title">Chicken Parmesan</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="item-img"></div>
-                                <div class="item-title">Chicken Parmesan</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="item-img"></div>
-                                <div class="item-title">Chicken Parmesan</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="item-img"></div>
-                                <div class="item-title">Chicken Parmesan</div>
+                            <div class="list-item" *ngFor="let p of newProducts" (click)="selectProduct(p)">
+                                <div class="item-img" [style.backgroundImage]="'url('+p.images[0]+')'"></div>
+                                <div class="item-title">{{ p.name }}</div>
                             </div>
                         </div>
                     </div>
@@ -54,20 +40,19 @@
                 <div class="menu-content">
                     <div class="product">
                         <div class="product-photos">
-                            <div class="product-main-photo"></div>
+                            <div class="product-main-photo" [style.backgroundImage]="'url('+selectProd?.images[0]+')'"></div>
                             <div class="footer-photos">
-                                <div class="footer-photo"></div>
-                                <div class="footer-photo"></div>
+                                <div class="footer-photo" [style.backgroundImage]="'url('+selectProd?.images[1]+')'"></div>
+                                <div class="footer-photo" [style.backgroundImage]="'url('+selectProd?.images[2]+')'"></div>
                             </div>
                         </div>
                         <div class="product-desc">
-                            <h4>Chicken Parmesan</h4>
-                            <span class="primary-text">Calories : 70gr - Chicken</span>
+                            <h4>{{ selectProd?.name }}</h4>
+                            <span class="primary-text">Calories : {{ selectProd?.weight}}gr {{ selectProd?.subCategory }}</span>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et .
+                                {{ selectProd?.description }}
                             </p>
-                            <h2>15$</h2>
+                            <h2>{{ selectProd?.price }}$</h2>
                             <div class="product-footer-btns">
                                 <button class="outline-primary-medium" (click)="openModal(template)">See More</button>
                                 <button class="primary-medium">Add</button>
@@ -94,28 +79,24 @@
         <button type="button" class="close-btn" aria-label="Close" (click)="modalRef.hide()">
         </button>
         <div class="details-photos">
-            <div class="details-main-photo"></div>
+            <div class="details-main-photo" [style.backgroundImage]="'url('+selectProd?.images[0]+')'"></div>
             <div class="details-footer-photos">
-                <div class="details-footer-photo"></div>
-                <div class="details-footer-photo"></div>
-                <div class="details-footer-photo"></div>
+                <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[1]+')'"></div>
+                <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[2]+')'"></div>
+                <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[3]+')'"></div>
             </div>
         </div>
         <div class="description">
-            <h4>Chicken Parmesan</h4>
-            <p class="primary-text">Calories : 70gr - Chicken</p>
+            <h4>{{ selectProd?.name }}</h4>
+            <p class="primary-text">Calories : {{ selectProd?.weight }}gr {{ selectProd?.subCategory }}</p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et .
-            </p>
-            <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.
+                {{ selectProd?.description }}
             </p>
         </div>
         <div class="card">
             <h4>Ingredients</h4>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et .
+                {{ selectProd?.ingredients }}
             </p>
         </div>
     </div>

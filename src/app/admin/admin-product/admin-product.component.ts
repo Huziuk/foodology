@@ -31,8 +31,6 @@ export class AdminProductComponent implements OnInit {
   modalRef: BsModalRef;
   editID: string;
   editStatus = false;
-  categorySelect = document.getElementById('category') as HTMLSelectElement;
-  subCategorySelect = document.getElementById('subCategory') as HTMLSelectElement;
 
   constructor(
     private modalService: BsModalService,
@@ -86,7 +84,6 @@ export class AdminProductComponent implements OnInit {
   }
 
   editFireProduct(prod: IProduct): void {
-    console.log(this.categorySelect);
     this.openModal(this.template)
     this.productForm = this.fb.group({
       name: [prod.name, [Validators.required]],
@@ -118,7 +115,7 @@ export class AdminProductComponent implements OnInit {
     })
     this.modalRef.hide()
     this.productForm.reset()
-    this.images = null
+    this.images = []
     this.editID = null
     this.editStatus = false;
   }
