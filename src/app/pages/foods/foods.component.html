@@ -52,10 +52,15 @@
                             <p>
                                 {{ selectProd?.description }}
                             </p>
-                            <h2>{{ selectProd?.price }}$</h2>
+                            <h2>{{ selectProd?.price * selectProd?.count | number: '0.0-2' }}$</h2>
+                            <div class="counter">
+                                <button type="button" class="count-btn" (click)="changeCount(selectProd, false)"  [disabled]="countStatus"></button>
+                                <h5>{{ selectProd?.count }}</h5>
+                                <button type="button" class="count-btn" (click)="changeCount(selectProd, true)" ></button>
+                            </div>
                             <div class="product-footer-btns">
                                 <button class="outline-primary-medium" (click)="openModal(template)">See More</button>
-                                <button class="primary-medium">Add</button>
+                                <button class="primary-medium" (click)="addToBasket(selectProd)">Add</button>
                             </div>
                         </div>
                     </div>
@@ -78,15 +83,15 @@
     <div class="details">
         <button type="button" class="close-btn" aria-label="Close" (click)="modalRef.hide()">
         </button>
-        <div class="details-photos">
-            <div class="details-main-photo" [style.backgroundImage]="'url('+selectProd?.images[0]+')'"></div>
+        <div class="details-photos mb-4">
+            <div class="details-main-photo mb-3" [style.backgroundImage]="'url('+selectProd?.images[0]+')'"></div>
             <div class="details-footer-photos">
                 <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[1]+')'"></div>
                 <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[2]+')'"></div>
                 <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[3]+')'"></div>
             </div>
         </div>
-        <div class="description">
+        <div class="description mb-4">
             <h4>{{ selectProd?.name }}</h4>
             <p class="primary-text">Calories : {{ selectProd?.weight }}gr {{ selectProd?.subCategory }}</p>
             <p>

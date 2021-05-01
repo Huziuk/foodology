@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfileGuard implements CanActivate {
+export class LoginGuard implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(
@@ -13,11 +13,13 @@ export class ProfileGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.chekUser();
   }
-  
-  chekUser(): boolean {
-    if(localStorage.getItem('user')) return true
-    this.router.navigateByUrl('login')
-    return false
-  }
 
+  chekUser(): boolean {
+    if (localStorage.getItem('user')) {
+      this.router.navigateByUrl('profile')
+      return true
+    }
+    return true
+  }
+  
 }

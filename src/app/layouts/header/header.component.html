@@ -5,7 +5,6 @@
                 <button (click)="toggleBurger()" class="open-burger"></button>
                 <div *ngIf="isVisibleburger" class="burger-menu">
                     <button (click)="toggleBurger()" class="close-btn"></button>
-                    <a (click)="toggleBurger()" [routerLink]="[ '/admin' ]" routerLinkActive="active" class="link">Admin</a>
                     <a (click)="toggleBurger()" [routerLink]="[ '/about' ]" routerLinkActive="active" class="link">About</a>
                     <a (click)="toggleBurger()" [routerLink]="[ '/foods' ]" routerLinkActive="active" class="link">Foods</a>
                     <a (click)="toggleBurger()" [routerLink]="[ '/pricing' ]" routerLinkActive="active" class="link">Pricing</a>
@@ -15,11 +14,10 @@
                 </div>
             </div>
             <nav>
-                <a [routerLink]="[ '/admin' ]" routerLinkActive="active" class="link">Admin</a>
                 <a [routerLink]="[ '/about' ]" routerLinkActive="active" class="link">About</a>
                 <a [routerLink]="[ '/foods' ]" routerLinkActive="active" class="link">Foods</a>
                 <a [routerLink]="[ '/pricing' ]" routerLinkActive="active" class="link">Pricing</a>
-                <a [routerLink]="[ '/login' ]" routerLinkActive="active-sing-in" class="outline-primary-medium sing-in">Sing In</a>
+                <a [routerLink]="[ '/'+loginPath ]" routerLinkActive="active-sing-in" class="outline-primary-medium sing-in">{{loginName}}</a>
                 <button [routerLink]="[ '/order' ]" class="primary-medium basket"></button>
             </nav>
         </div>

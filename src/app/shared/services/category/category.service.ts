@@ -7,9 +7,7 @@ import { ICategory } from '../../interfaces/category.interface';
 })
 export class CategoryService {
 
-  constructor(
-    private db: AngularFirestore
-  ) { }
+  constructor(private db: AngularFirestore) { }
 
   firebaseCategories(): AngularFirestoreCollection<ICategory> {
     return this.db.collection('category')

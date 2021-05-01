@@ -4,28 +4,14 @@
             <div class="left">
                 <div class="product-title text-center">
                     <h2>Items & Payment</h2>
-                    <span class="sup-title">4 items</span>
+                    <span class="sup-title">{{ products.length }} items</span>
                 </div>
                 <div class="products">
-                    <div class="prod">
-                        <div class="prod-img"></div>
-                        <p class="prod-name">Chicken Parmesan</p>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="prod">
-                        <div class="prod-img"></div>
-                        <p class="prod-name">Chicken Parmesan</p>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="prod">
-                        <div class="prod-img"></div>
-                        <p class="prod-name">Chicken Parmesan</p>
-                        <p>$15.00</p>
-                    </div>
-                    <div class="prod">
-                        <div class="prod-img"></div>
-                        <p class="prod-name">Chicken Parmesan</p>
-                        <p>$15.00</p>
+                    <div class="prod" *ngFor="let p of products">
+                        <div class="prod-img" [style.backgroundImage]="'url('+p.images[0]+')'"></div>
+                        <p class="prod-name">{{ p.name }}</p>
+                        <p>${{ p.price * p.count | number:'2.2-2' }}</p>
+                        <button class="delete-prod" (click)="deleteLocalProduct(p)"></button>
                     </div>
                 </div>
             </div>

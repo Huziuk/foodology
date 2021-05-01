@@ -64,8 +64,7 @@ export class AdminProductComponent implements OnInit {
     let prod = {
       ...this.productForm.value,
       images: this.images,
-      //category: 'Main Course',
-      //subCategory: this.categories[0],
+      count: 1
     }
     console.log(prod);
     this.productService.firebaseCategories().add(prod)
@@ -102,7 +101,8 @@ export class AdminProductComponent implements OnInit {
   saveFireProduct(): void {
     let prod = {
       ...this.productForm.value,
-      images: this.images
+      images: this.images,
+      count: 1
     }
     this.productService.firebaseCategories().doc(this.editID).update(prod)
     .then(() => {

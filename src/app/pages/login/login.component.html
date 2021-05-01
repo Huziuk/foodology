@@ -2,7 +2,7 @@
     <div class="login-photo">
         <!--<img src="../../../assets/images/login-img.jpg" alt="...">-->
     </div>
-    <form class="login-form">
+    <form class="login-form" *ngIf="selectForm" [formGroup]="signInForm" (ngSubmit)="signIn()">
         <h4>Sign in to continue</h4>
         <button class="primary-large google-btn">Sign in whith Google</button>
         <div class="text-with-line">
@@ -11,16 +11,41 @@
         </div>
         <label class="label">
             <span class="label-name">Email address</span>
-            <input type="email" class="control">
+            <input type="email" class="control" formControlName="signInEmail" [ngClass]="{'control-danger': !validByControl(signInForm, 'signInEmail')}">
         </label>
         <label class="label">
             <span class="label-name">Password</span>
-            <input type="password" class="control">
+            <input type="password" class="control" formControlName="signInPassword" [ngClass]="{'control-danger': !validByControl(signInForm, 'signInPassword')}">
+            <span class="danger-text" [ngStyle]="{'display': signInError ? 'block' : 'none'}">Invalid email or password</span>
         </label>
-        <div class="btn-forgot">
+        <!--<div class="btn-forgot">
             <button class="btn">Forgot password?</button>
+        </div>-->
+        <button type="submit" class="primary-large" [disabled]="!signInForm.valid">Sign in</button>
+        <p>Don’t have an account? <button class="btn" (click)="changeForm()">Sign up now</button></p>
+    </form>
+    <form class="login-form" *ngIf="!selectForm" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+        <h4>Sign up to continue</h4>
+        <button class="primary-large google-btn">Sign up   whith Google</button>
+        <div class="text-with-line">
+            <p>Or, sign up with your email</p>
+            <span class="line"></span>
         </div>
-        <button type="submit" class="primary-large">Sign in</button>
-        <p>Don’t have an account? <button class="btn">Sign up now</button></p>
+        <label class="label">
+            <span class="label-name">Email address</span>
+            <input type="email" class="control" formControlName="signUpEmail" [ngClass]="{'control-danger': !validByControl(signUpForm, 'signUpEmail')}">
+        </label>
+        <label class="label">
+            <span class="label-name">Password</span>
+            <input type="password" class="control" formControlName="signUpPassword" [ngClass]="{'control-danger': !validByControl(signUpForm, 'signUpPassword')}">
+        </label>
+        <label class="label">
+            <span class="label-name">Repeat password</span>
+            <input type="password" class="control" formControlName="signUpRepeatPassword" [ngClass]="{'control-danger': !validByControl(signUpForm, 'signUpRepeatPassword')}">
+            <span class="danger-text" [ngStyle]="{'display': passwordMatch ? 'block' : 'none'}">Passwords do not match</span>
+            <span class="danger-text" [ngStyle]="{'display': signUpError ? 'block' : 'none'}">The email address is already in use.</span>
+        </label>
+        <button type="submit" class="primary-large" [disabled]="!signUpForm.valid">Sign up</button>
+        <p>Do you have an account? <button class="btn" (click)="changeForm()">Sign in now</button></p>
     </form>
 </article>

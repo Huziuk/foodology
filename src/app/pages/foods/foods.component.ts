@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-foods',
@@ -18,11 +19,13 @@ export class FoodsComponent implements OnInit {
   selectProd = null;
   subCatForm: FormGroup;
   modalRef: BsModalRef;
-  mainCat = 'Main Course'
+  mainCat = 'Main Course';
+  countStatus: boolean = true;
 
   constructor(
     private modalService: BsModalService,
     private productService: ProductService,
+    private orderService: OrderService,
     private categoryService: CategoryService,
     private fb: FormBuilder,
   ) { }
@@ -65,6 +68,15 @@ export class FoodsComponent implements OnInit {
     });
   }
 
+  addToBasket(prod: IProduct): void {
+    this.orderService.addProductInBasket(prod)
+  }
+
+  changeCount(prod: IProduct, status: boolean): void {
+    status ? prod.count++ : prod.count--;
+    prod.count <= 1 ? this.countStatus = true : this.countStatus = false;
+  }
+
   selectProduct(prod): void {
     this.selectProd = prod;
   }
@@ -76,8 +88,6 @@ export class FoodsComponent implements OnInit {
   
   selectMainCat(cat: string): void {
     this.mainCat = cat
-    console.log(this.mainCat);
-    console.log(this.subCatForm.value.cat);
     this.newProducts = []
     this.getFireProduct(this.mainCat, this.subCatForm.value.cat)
   }

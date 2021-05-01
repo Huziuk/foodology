@@ -25,6 +25,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { SubscribeComponent } from './layouts/subscribe/subscribe.component';
 import { FeedbackComponent } from './layouts/feedback/feedback.component';
 import { MenustodayComponent } from './layouts/menustoday/menustoday.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
@@ -50,7 +51,8 @@ import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.componen
     FeedbackComponent,
     MenustodayComponent,
     AdminBundleComponent,
-    OrdersComponent
+    OrdersComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

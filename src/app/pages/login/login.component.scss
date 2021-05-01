@@ -41,6 +41,12 @@
     }
     label{
         margin-bottom: 25px;
+        position: relative;
+        .danger-text{
+            position: absolute;
+            left: 20px;
+            bottom: -20px;
+        }
     }
     .btn-forgot{
         display: flex;

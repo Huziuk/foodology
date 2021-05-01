@@ -1,0 +1,20 @@
+<form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="content d-flex align-items-center flex-column mt-5 mb-5">
+    <div class="d-flex align-items-center" *ngIf="adminStatus">
+        <p>Go to</p>
+        <button type="button" class="btn"><a [routerLink]="[ '/admin' ]" >Admin Panel</a></button>
+    </div>
+    <label class="label mb-3">
+        <span class="label-name">First name</span>
+        <input type="text" class="control" formControlName="firstName" placeholder="Enter your first name" [ngClass]="{'control-danger': !validByControl('firstName')}" (input)="changeInput()">
+    </label>
+    <label class="label mb-3">
+        <span class="label-name">Last name</span>
+        <input type="text" class="control" formControlName="lastName" placeholder="Enter your last name" [ngClass]="{'control-danger': !validByControl('lastName')}" (input)="changeInput()">
+    </label>
+    <label class="label mb-3">
+        <span class="label-name">Email</span>
+        <input type="email" class="control" formControlName="email" placeholder="Enter your last name" disabled>
+    </label>
+    <button type="submit" class="primary-large mb-3" [disabled]="!saveStatus">Save</button>
+    <button type="button" class="btn" (click)="signOut()">Sign out</button>
+</form>

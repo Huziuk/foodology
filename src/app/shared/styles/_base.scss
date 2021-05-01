@@ -133,6 +133,13 @@ p {
     color: $primary;
 }
 
+.danger-text {
+    color: $danger;
+    font-family: 'Poppins';
+    font-size: 12px;
+    line-height: 18px;
+}
+
 // Buttons Styles
 .primary-large,
 .outline-primary-large {
