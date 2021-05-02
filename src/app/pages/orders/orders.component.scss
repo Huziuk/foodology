@@ -1,7 +1,9 @@
 @import "../../shared/styles/variables";
 
 .wrapper{
-    margin-top: 50px;
+    margin: 50px auto 100px;
+    padding-bottom: 75px;
+    border-bottom: 1px solid #d3d3d3;
 }
 
 .products-wrapper{
@@ -11,7 +13,15 @@
 
 .left{
     width: 550px;
+}
 
+.information{
+    position: sticky;
+    top: 70px;
+}
+
+.information{
+    width: 300px;
 }
 
 .product-title{
@@ -88,11 +98,93 @@
         top: 50%;
         transform: translateY(-50%);
         right: -25px;
-        opacity: .8;
-        transition: all .2s ease;
-        cursor: pointer;
-        &:hover{
-            opacity: 1;
+    }
+}
+
+.name::before{
+    content: '';
+    display: block;
+}
+
+.label{
+    width: 220px;
+    padding-left: 30px;
+    height: 35px;
+    position: relative;
+    .ico{
+        content: '';
+        display: block;
+        width: 17px;
+        height: 17px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background: url('../../../assets/images/user-ico.svg') center/cover no-repeat transparent;
+    }
+    .address{
+        background: url('../../../assets/images/arrow-top.svg') center/cover no-repeat transparent;
+    }
+    .number{
+        background: url('../../../assets/images/phone-ico.svg') center/cover no-repeat transparent;
+    }
+    .credit-card{
+        background: url('../../../assets/images/credit-card.svg') center/cover no-repeat transparent;
+    }
+}
+.control{
+    height: 35px;
+    font-size: 14px;
+}
+
+.card-data{
+    text-align: center;
+    padding: 0;
+    width: 70px;
+    margin-left: 10px;
+}
+
+h6{
+    color: $titleText;
+}
+
+.order-button{
+    border-top: 1px solid #DFE1E6;
+    padding-top: 30px;
+}
+
+@media screen and (max-width: 414px) {
+    .wrapper{
+        width: 100%;
+        padding: 0 30px;
+        margin-bottom: 30px;
+    }
+    .products-wrapper{
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    .products{
+        width: auto;
+        //justify-content: center;
+    }
+    .prod{
+        width: 80px;
+        margin-right: 10px;
+        margin-left: 15px;
+        .prod-img{
+            height: 80px;
         }
+    }
+    .order-data{
+        width: 100%;
+        padding: 0;
+        border: none;
+        margin-bottom: 50px;
+    }
+    .left{
+        width: 100%;
+    }
+    .product-title{
+        margin-bottom: 20px;
     }
 }

@@ -23,6 +23,7 @@
     "bootstrap": "^5.0.0-beta3",
     "firebase": "^7.0 || ^8.0",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-mask": "^11.1.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

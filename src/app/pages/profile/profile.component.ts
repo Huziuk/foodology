@@ -29,6 +29,21 @@ export class ProfileComponent implements OnInit {
     this.user.role == 'ADMIN' ? this.adminStatus = true : this.adminStatus = false;
   }
 
+  saveProfile(): void {
+    this.user.firstName = this.profileForm.value.firstName
+    this.user.lastName = this.profileForm.value.lastName
+    this.user.phone = this.profileForm.value.phone
+    this.user.cardNumber = this.profileForm.value.cardNumber
+    this.user.cardDate = this.profileForm.value.cardDate
+    this.authService.updateProfile(this.user)
+    localStorage.setItem('user', JSON.stringify(this.user))
+    this.saveStatus = false
+  }
+
+  signOut(): void {
+    this.authService.signOut()
+  }
+
   validByControl(control: string): any {
     if (this.profileForm.controls[control].untouched) {
       return true
@@ -37,32 +52,27 @@ export class ProfileComponent implements OnInit {
   }
 
   changeInput(){
-    if (this.user.firstName != this.profileForm.value.firstName || this.user.lastName != this.profileForm.value.lastName) {
-      if (this.profileForm.valid) {
-        this.saveStatus = true
-      }
+    if (
+      this.user.firstName != this.profileForm.value.firstName || 
+      this.user.lastName != this.profileForm.value.lastName ||
+      this.user.phone != this.profileForm.value.phone ||
+      this.user.cardNumber != this.profileForm.value.cardNumber ||
+      this.user.cardDate != this.profileForm.value.cardDate
+    ) {
+      this.profileForm.valid ? this.saveStatus = true : this.saveStatus = false
     }
     else this.saveStatus = false
   }
 
   initForm(): void {
     this.profileForm = this.fb.group({
-      firstName: [this.user.firstName, [Validators.required, Validators.pattern('^[A-Z]{1}[a-z]+$')]],
-      lastName: [this.user.lastName, [Validators.required, Validators.pattern('^[A-Z]{1}[a-z]+$')]],
+      firstName: [this.user.firstName, [Validators.pattern('^[A-Z]{1}[a-z]+$')]],
+      lastName: [this.user.lastName, [Validators.pattern('^[A-Z]{1}[a-z]+$')]],
       email: [this.user.email, [Validators.required]],
+      phone: [this.user.phone, [Validators.pattern('^[0-9]{10}$')]],
+      cardNumber: [this.user.cardNumber, [Validators.pattern('^[0-9]{16}$')]],
+      cardDate: [this.user.cardDate, [Validators.pattern('^[0-9]{4}$')]],
     })
-  }
-
-  saveProfile(): void {
-    this.user.firstName = this.profileForm.value.firstName
-    this.user.lastName = this.profileForm.value.lastName
-    this.authService.updateProfile(this.user)
-    localStorage.setItem('user', JSON.stringify(this.user))
-    this.saveStatus = false
-  }
-
-  signOut(): void {
-    this.authService.signOut()
   }
 
 }

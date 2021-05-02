@@ -15,6 +15,17 @@
         <span class="label-name">Email</span>
         <input type="email" class="control" formControlName="email" placeholder="Enter your last name" disabled>
     </label>
+    <label class="label mb-3">
+        <span class="label-name">Phone number</span>
+        <input type="text" class="control control-sm" placeholder="Write your number" formControlName="phone" mask='(000) 000-0000' [ngClass]="{'control-danger': !validByControl('phone')}" (input)="changeInput()">
+    </label>
+    <label class="label mb-3">
+        <div class="d-flex ">
+            <input type="text" class="control card-num control-sm" placeholder="1111-1111-1111-1111" formControlName="cardNumber"
+                mask='0000-0000-0000-0000' [ngClass]="{'control-danger': !validByControl('cardNumber')}" (input)="changeInput()">
+            <input type="text" class="control control-sm card-data" placeholder="11/11" formControlName="cardDate" mask='00/00' [ngClass]="{'control-danger': !validByControl('cardDate')}" (input)="changeInput()">
+        </div>
+    </label>
     <button type="submit" class="primary-large mb-3" [disabled]="!saveStatus">Save</button>
     <button type="button" class="btn" (click)="signOut()">Sign out</button>
 </form>

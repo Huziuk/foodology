@@ -13,7 +13,11 @@ export class OrderService {
     let products: Array<IProduct> = [];
     if (localStorage.getItem('basket')){
       products = JSON.parse(localStorage.getItem('basket'))
-      products.push(prod)
+      if(products.some(product => product.id === prod.id)){
+        const INDEX = products.findIndex(product => product.id === prod.id)
+        products[INDEX].count += prod.count;
+      } 
+      else products.push(prod)
     } else {
       products.push(prod)
     }

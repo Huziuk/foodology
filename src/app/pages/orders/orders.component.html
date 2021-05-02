@@ -11,18 +11,50 @@
                         <div class="prod-img" [style.backgroundImage]="'url('+p.images[0]+')'"></div>
                         <p class="prod-name">{{ p.name }}</p>
                         <p>${{ p.price * p.count | number:'2.2-2' }}</p>
+                        <p>{{ p.count }} pices</p>
                         <button class="delete-prod" (click)="deleteLocalProduct(p)"></button>
                     </div>
                 </div>
             </div>
             <div class="order-data">
-                <div class="information">
-                    <h5 class="title-data">
+                <div></div>
+                <form class="information" [formGroup]="orderForm">
+                    <h5 class="title-data mb-3">
                         Shipping Information
-                        <button class="edit-btn"></button>
+                        <div class="edit-btn"></div>
                     </h5>
-    
-                </div>
+                    <label class="label mb-3">
+                        <div class="ico name"></div>
+                        <input type="text" class="control" placeholder="Write your name" formControlName="name">
+                    </label>
+                    <label class="label mb-3">
+                        <div class="ico number"></div>
+                        <input type="text" class="control" placeholder="Write your number" formControlName="phone"  mask='(000) 000-0000'>
+                    </label>
+                    <label class="label mb-3">
+                        <div class="ico address"></div>
+                        <input type="text" class="control" placeholder="Write your address" formControlName="address">
+                    </label>
+                    <h5 class="title-data mb-3">
+                        Payment
+                        <div class="edit-btn"></div>
+                    </h5>
+                    <label class="label mb-3">
+                        <div class="ico credit-card"></div>
+                        <div class="d-flex ">
+                            <input type="text" class="control" placeholder="1111-1111-1111-1111" formControlName="cardNumber" mask='0000-000-0000-0000'>
+                            <input type="text" class="control card-data" placeholder="11/11" formControlName="cardDate"
+                            mask='00/00'>
+                        </div>
+                    </label>
+                    <div class="d-flex justify-content-between mt-5 mb-3">
+                        <h6>Totap Price</h6>
+                        <h6>${{ totalPrice | number:'0.2-2' }}</h6>
+                    </div>
+                    <div class="order-button d-flex justify-content-end">
+                        <button class="primary-large">PROCEED</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

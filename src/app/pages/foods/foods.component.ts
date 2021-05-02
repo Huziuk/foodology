@@ -70,6 +70,7 @@ export class FoodsComponent implements OnInit {
 
   addToBasket(prod: IProduct): void {
     this.orderService.addProductInBasket(prod)
+    prod.count = 1
   }
 
   changeCount(prod: IProduct, status: boolean): void {
