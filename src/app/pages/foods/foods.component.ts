@@ -45,6 +45,7 @@ export class FoodsComponent implements OnInit {
       )
     ).subscribe(data => {
       this.products = data;
+      this.newProducts = []
       this.products.forEach(p => {
         if (cat.toLowerCase() === 'all' && mainCat.toLowerCase() === p.category.toLowerCase()){
           this.newProducts.push(p)

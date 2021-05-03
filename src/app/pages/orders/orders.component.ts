@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
   products: Array<IProduct> = [];
   totalPrice = 0;
   orderForm: FormGroup;
+  emptyBasket: boolean;
 
   constructor(
     private orderService: OrderService,
@@ -23,16 +24,22 @@ export class OrdersComponent implements OnInit {
     this.getLocalProduct()
     this.initForm()
   }
+  
+  checkBasket(){
+    this.products.length ? this.emptyBasket = false : this.emptyBasket = true
+  }
 
   getLocalProduct(): void {
     this.products = JSON.parse(localStorage.getItem('basket'))
     this.totalPrice = 0;
     this.products.forEach(p => this.totalPrice += p.price * p.count)
+    this.checkBasket()
   }
 
   deleteLocalProduct(prod: IProduct): void {
     this.orderService.deleteProductInBasket(prod)
     this.getLocalProduct()
+    this.checkBasket()
   }
 
   initForm(): void {

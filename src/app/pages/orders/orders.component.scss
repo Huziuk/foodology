@@ -6,6 +6,13 @@
     border-bottom: 1px solid #d3d3d3;
 }
 
+.empty{
+    height: calc(100vh - 293px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .products-wrapper{
     display: flex;
     justify-content: space-between;
@@ -158,6 +165,9 @@ h6{
         width: 100%;
         padding: 0 30px;
         margin-bottom: 30px;
+    }
+    .information{
+        width: 100%;
     }
     .products-wrapper{
         flex-direction: column-reverse;

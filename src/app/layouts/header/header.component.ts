@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,13 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   isVisibleburger = false;
   loginPath: string;
-  loginName: string
+  loginName: string;
+  emptyBasket: boolean;
+  
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private orderService: OrderService,
   ) { }
 
   ngOnInit(): void {
