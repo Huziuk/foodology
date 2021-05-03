@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { IBundle } from 'src/app/shared/interfaces/bundle.interface';
 import { BundleService } from 'src/app/shared/services/bundle/bundle.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-pricing',
@@ -12,7 +13,8 @@ export class PricingComponent implements OnInit {
   bundles: Array<any> = [];
 
   constructor(
-    private bundleService: BundleService
+    private bundleService: BundleService,
+    private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,11 @@ export class PricingComponent implements OnInit {
     ).subscribe(data => {
       this.bundles = data;
     });
+  }
+
+  addToBasket(prod: IBundle): void {
+    this.orderService.addProductInBasket(prod)
+    prod.count = 1
   }
 
   toggleQuestion(count: number): void{

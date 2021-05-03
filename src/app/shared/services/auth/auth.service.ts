@@ -53,7 +53,7 @@ export class AuthService {
           email: userCredential.user.email,
           password: password,
           date: new Date(),
-          role: 'ADMIN',
+          role: 'USER',
         }
         this.db.collection('users').add(user)
           .then(myUser => {})

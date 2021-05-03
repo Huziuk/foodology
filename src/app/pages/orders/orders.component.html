@@ -1,6 +1,6 @@
 <article>
     <div class="empty" *ngIf="emptyBasket">
-        <h3 class="text-center" >Basket Empty, go to <a class="" [routerLink]="[ '/foods' ]">Foods</a></h3> 
+        <h3 class="text-center" >Basket empty, go to <a class="" [routerLink]="[ '/foods' ]">Foods</a> or <a class="" [routerLink]="[ '/pricing' ]">Bundles</a></h3> 
     </div>
     <div class="wrapper" *ngIf="!emptyBasket">
         <div class="products-wrapper">
@@ -11,7 +11,7 @@
                 </div>
                 <div class="products">
                     <div class="prod" *ngFor="let p of products">
-                        <div class="prod-img" [style.backgroundImage]="'url('+p.images[0]+')'"></div>
+                        <div class="prod-img" [style.backgroundImage]="'url('+p.images+')'"></div>
                         <p class="prod-name">{{ p.name }}</p>
                         <p>${{ p.price * p.count | number:'2.2-2' }}</p>
                         <p>{{ p.count }} pices</p>
@@ -28,15 +28,15 @@
                     </h5>
                     <label class="label mb-3">
                         <div class="ico name"></div>
-                        <input type="text" class="control" placeholder="Write your name" formControlName="name">
+                        <input type="text" class="control" placeholder="Write your name" formControlName="name" [ngClass]="{'control-danger': !validByControl('name')}">
                     </label>
                     <label class="label mb-3">
                         <div class="ico number"></div>
-                        <input type="text" class="control" placeholder="Write your number" formControlName="phone"  mask='(000) 000-0000'>
+                        <input type="text" class="control" placeholder="Write your number" formControlName="phone"  mask='(000) 000-0000' [ngClass]="{'control-danger': !validByControl('phone')}">
                     </label>
                     <label class="label mb-3">
                         <div class="ico address"></div>
-                        <input type="text" class="control" placeholder="Write your address" formControlName="address">
+                        <input type="text" class="control" placeholder="Write your address" formControlName="address" [ngClass]="{'control-danger': !validByControl('address')}">
                     </label>
                     <h5 class="title-data mb-3">
                         Payment
@@ -45,9 +45,9 @@
                     <label class="label mb-3">
                         <div class="ico credit-card"></div>
                         <div class="d-flex ">
-                            <input type="text" class="control" placeholder="1111-1111-1111-1111" formControlName="cardNumber" mask='0000-0000-0000-0000'>
+                            <input type="text" class="control card-number" placeholder="1111-1111-1111-1111" formControlName="cardNumber" mask='0000-0000-0000-0000' [ngClass]="{'control-danger': !validByControl('cardNumber')}">
                             <input type="text" class="control card-data" placeholder="11/11" formControlName="cardDate"
-                            mask='00/00'>
+                            mask='00/00' [ngClass]="{'control-danger': !validByControl('cardDate')}">
                         </div>
                     </label>
                     <div class="d-flex justify-content-between mt-5 mb-3">
@@ -55,7 +55,7 @@
                         <h6>${{ totalPrice | number:'0.2-2' }}</h6>
                     </div>
                     <div class="order-button d-flex justify-content-end">
-                        <button class="primary-large">PROCEED</button>
+                        <button class="primary-large" [disabled]="!orderForm.valid" (click)="sendOrder()">PROCEED</button>
                     </div>
                 </form>
             </div>

@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
 
   initSingInForm(): void {
     this.signInForm = this.fb.group({
-      signInEmail: [null, [Validators.required, Validators.email]],
+      signInEmail: [null, [Validators.required]],
       signInPassword: [null, [Validators.required]],
     })
   }

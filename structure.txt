@@ -22,11 +22,3 @@ app/
 ng build --prod --base-href "https://Huziuk.github.io/foodology/"
 
 npx angular-cli-ghpages --dir=dist/foodology
-
-https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2Fterris-crispy-fried-chicken-legs-3056879-10_preview-5b05ec40a474be00362260d7.jpeg?alt=media&token=53443cf3-873c-4880-982f-9526f246e54a
-
-https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2Fimage.jpg?alt=media&token=b1ebb261-ea34-4112-99a3-f651ec353282
-
-https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2FGrilled-BBQ-Chicken-SpendWithePennies-4.jpg?alt=media&token=8da5c05c-545e-4d3a-b96a-10c1883c95fd
-
-https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2FAutoportrait_de_Vincent_van_Gogh.jpg?alt=media&token=67a217e8-7359-4c68-91c9-5f14a678fc20

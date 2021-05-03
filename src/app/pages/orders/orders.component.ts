@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IBundle } from 'src/app/shared/interfaces/bundle.interface';
+import { IOrder } from 'src/app/shared/interfaces/order.interface';
 import { IProduct } from 'src/app/shared/interfaces/product.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
+import { Order } from 'src/app/shared/models/order.model';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
@@ -10,7 +13,7 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  products: Array<IProduct> = [];
+  products: Array<IProduct | IBundle> = [];
   totalPrice = 0;
   orderForm: FormGroup;
   emptyBasket: boolean;
@@ -24,6 +27,27 @@ export class OrdersComponent implements OnInit {
     this.getLocalProduct()
     this.initForm()
   }
+
+  sendOrder(): void{
+    const { name, phone, address } = this.orderForm.value
+    //const order: IOrder = new Order(name, phone, address, this.products)
+    const order = {
+      name: name,
+      phone: phone,
+      address: address,
+      products: this.products,
+    }
+    console.log(order);
+    this.orderService.fireOrder().add(order)
+      .then(() => {
+        this.products = []
+        localStorage.removeItem('basket')
+        this.checkBasket()
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
   
   checkBasket(){
     this.products.length ? this.emptyBasket = false : this.emptyBasket = true
@@ -32,8 +56,12 @@ export class OrdersComponent implements OnInit {
   getLocalProduct(): void {
     this.products = JSON.parse(localStorage.getItem('basket'))
     this.totalPrice = 0;
-    this.products.forEach(p => this.totalPrice += p.price * p.count)
-    this.checkBasket()
+    if(this.products){
+      this.products.forEach(p => this.totalPrice += p.price * p.count)
+      this.checkBasket()
+    } else {
+      this.emptyBasket = true
+    }
   }
 
   deleteLocalProduct(prod: IProduct): void {
@@ -42,31 +70,34 @@ export class OrdersComponent implements OnInit {
     this.checkBasket()
   }
 
+  validByControl(control: string): any {
+    if (this.orderForm.controls[control].untouched) {
+      return true
+    }
+    return this.orderForm.controls[control].valid;
+  }
+
   initForm(): void {
     if (localStorage.getItem('user')){
       const user: IUser = JSON.parse(localStorage.getItem('user'))
-      const name = user.firstName + ' ' + user.lastName
+      let name = `${user.firstName} ${user.lastName}`
+      name == ' ' ? name = '' : name 
       this.orderForm = this.fb.group({
-        name: [name, [Validators.required]],
+        name: [name, [Validators.required, Validators.pattern('^[a-zA-z ]{3,36}$')]],
         address: [null, [Validators.required]],
-        phone: [user.phone, [Validators.required]],
-        cardNumber: [user.cardNumber, [Validators.required]],
-        cardDate: [user.cardDate, [Validators.required]],
+        phone: [user.phone, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+        cardNumber: [user.cardNumber, [Validators.required, Validators.pattern('^[0-9]{16}$')]],
+        cardDate: [user.cardDate, [Validators.required, Validators.pattern('^[0-9]{4}$')]],
       })
     } else {
       this.orderForm = this.fb.group({
-        name: [null, [Validators.required]],
+        name: [null, [Validators.required, Validators.pattern('^[a-zA-z ]{3,36}$')]],
         address: [null, [Validators.required]],
-        phone: [null, [Validators.required]],
-        cardNumber: [null, [Validators.required]],
-        cardDate: [null, [Validators.required]],
+        phone: [null, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+        cardNumber: [null, [Validators.required, Validators.pattern('^[0-9]{16}$')]],
+        cardDate: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]],
       })
     }
   }
 
 }
-
-//document.getElementById('phone').addEventListener('blur', function (e) {
-//  var x = e.target.value.replace(/\D/g, '').match(/(\d{3})(\d{3})(\d{4})/);
-//  e.target.value = '(' + x[1] + ') ' + x[2] + '-' + x[3];
-//});

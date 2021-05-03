@@ -9,7 +9,7 @@
             <div class="bundle-cards">
                 <div class="foods-card" *ngFor="let b of bundles; let i=index">
                     <div class="foods-card-head">
-                        <div class="head-photo" [style.backgroundImage]="'url('+b.image+')'" ></div>
+                        <div class="head-photo" [style.backgroundImage]="'url('+b.images+')'" ></div>
                         <div class="head-text">
                             <h5>{{ b.category }}</h5>
                             <h2>${{ b.price }} <p>/ pcs</p></h2>
@@ -22,7 +22,7 @@
                             <li><p>{{ b.dessert }}</p></li>
                         </ul>
                     </div>
-                    <button class="primary-large">Add</button>
+                    <button class="primary-large" (click)="addToBasket(b)">Add</button>
                 </div>
             </div>
         </div>

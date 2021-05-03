@@ -1,10 +1,12 @@
 export interface IBundle {
     price: number
-    image: string
+    images: string
     firstFood: string
     secondFood: string
     dessert: string
     category: string
+    count: number
+    name: string
     id?: string | number
     
 }

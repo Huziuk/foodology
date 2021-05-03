@@ -55,7 +55,7 @@ export class AdminBundleComponent implements OnInit {
       const bun = {
         ...this.bundleForm.value,
         category: this.formName,
-        image: this.imageUrl,
+        images: this.imageUrl,
         id: this.bundleID
       }
       this.bundleService.firebaseBundle().doc(this.bundleID).update(bun).then(
@@ -128,7 +128,7 @@ export class AdminBundleComponent implements OnInit {
           secondFood: [bun.secondFood, [Validators.required]],
           dessert: [bun.dessert, [Validators.required]],
         })
-        this.imageUrl = bun.image;
+        this.imageUrl = bun.images;
         this.imageUrl ? this.imageStatus = true : this.imageStatus = false
         this.bundleID = bun.id;
         this.saveStatus = true
