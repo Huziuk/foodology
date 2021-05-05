@@ -1,0 +1,55 @@
+//@import "~bootstrap/dist/css/bootstrap.css";
+@import "../../shared/styles/variables";
+
+
+.order{
+    margin: 30px 0;
+    padding: 36px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 0 rgb(219, 218, 218);
+}
+
+.product{
+    overflow: auto;
+}
+
+label{
+    width: 190px;
+}
+
+.control{
+    height: 35px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d3d3d36e;
+    border-radius: 9em;
+}
+
+.prod {
+    min-width: 150px;
+    margin-right: 20px;
+    text-align: center;
+    .prod-img {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 20px;
+        border-radius: 25px;
+        background: url("../../../assets/images/menu-item-img.jpg") center/cover no-repeat;
+    }
+    .prod-name {
+        font-weight: 600;
+        color: $titleText;
+    }
+}
+
+.done{
+    font-size: 22px;
+}

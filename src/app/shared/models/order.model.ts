@@ -7,6 +7,7 @@ export class Order implements IOrder {
         public name: string,
         public phone: number,
         public address: string,
+        public id: string,
         public products: Array<IProduct | IBundle>
     ){}
 }

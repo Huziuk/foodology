@@ -5,5 +5,6 @@ export interface IOrder {
     name: string
     phone: number
     address: string
+    id?: string
     products: Array<IProduct | IBundle>
 }

@@ -66,7 +66,6 @@ export class AdminProductComponent implements OnInit {
       images: this.images,
       count: 1
     }
-    console.log(prod);
     this.productService.firebaseCategories().add(prod)
       .then(() => {
         this.getFireProducts()
@@ -120,7 +119,7 @@ export class AdminProductComponent implements OnInit {
     this.editStatus = false;
   }
 
-  deletaFireProduct(prod: IProduct): void {
+  deleteFireProduct(prod: IProduct): void {
     this.productService.firebaseCategories().doc(prod.id).delete()
       .then(() => {
         this.getFireProducts()
@@ -157,6 +156,17 @@ export class AdminProductComponent implements OnInit {
     })
   }
 
+  deleteImage(url: string): void {
+    this.storage.refFromURL(url).delete().subscribe(
+      () => {
+        this.images.splice(this.images.indexOf(url), 1)
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
   initForm(): void {
     this.productForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -190,7 +200,10 @@ export class AdminProductComponent implements OnInit {
   }
 
   checkUpload(): boolean {
-    return this.images.length === 4;
+    if(this.images){
+      return this.images.length === 4;
+    }
+    return false
   }
 
 }

@@ -51,33 +51,58 @@ textarea {
     width: 100%;
     height: 100%;
     border-radius: 8px;
-    border: 1px solid #DFE1E6;
-    background: url('../../../assets/images/add.svg') center/35px no-repeat #eff0f1;
+    border: 1px solid #dfe1e6;
+    background: url("../../../assets/images/add.svg") center/35px no-repeat #eff0f1;
     cursor: pointer;
-    transition: all .2s ease;
-    opacity: .8;
-    &:hover{
+    transition: all 0.2s ease;
+    opacity: 0.8;
+    &:hover {
         opacity: 1;
     }
 }
 
-.photo{
+.photo {
     width: 106px;
     height: 106px;
     margin-right: 15px;
-    border: 1px solid #DFE1E6;
+    border: 1px solid #dfe1e6;
     border-radius: 8px;
     background-size: cover;
     background-position: center;
     background-repeat: none;
+    position: relative;
+    .delete-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        i {
+            font-size: 30px;
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+        &:hover {
+            background-color: rgba(231, 231, 231, 0.144);
+            i {
+                opacity: 0.8;
+            }
+        }
+    }
 }
 
-.prod{
+.prod {
     margin: 30px 0;
     padding: 30px;
     border-radius: 25px;
     box-shadow: 0 0 10px 0 rgb(219, 218, 218);
-    input:disabled, textarea:disabled{
+    input:disabled,
+    textarea:disabled {
         background-color: #fafafa;
     }
 }
