@@ -36,12 +36,52 @@
     border-radius: 0px 0px 50px 50px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 1215px) and (min-width: 1000px) {
+    .feedback-right{
+        min-width: 350px;
+        max-width: 350px;
+        h2{
+            font-size: 42px; 
+        }
+    }
+}
+@media screen and (max-width: 1000px) and (min-width: 880px) {
+    .feedback-right{
+        min-width: 328px;
+        max-width: 328px;
+        h2{
+            font-size: 40px;
+        }
+        h4{
+            font-size: 26px;
+        }
+    }
+}
+@media screen and (max-width: 880px) and (min-width: 768px) {
+    .feedback-right{
+        min-width: 300px;
+        max-width: 300px;
+        margin-left: 70px;
+        h2{
+            font-size: 40px;
+        }
+        h4{
+            font-size: 26px;
+        }
+    }
+    .user-name{
+        h4{
+            font-size: 24px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
     .feedback{
         flex-wrap: wrap;
         flex-direction: column-reverse;
         padding: 0px 30px;
-        margin-bottom: 0px;
+        margin-bottom: 80px;
     }
     .feedback-right{
         min-width: 100%;

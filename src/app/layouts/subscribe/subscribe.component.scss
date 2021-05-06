@@ -6,12 +6,26 @@
     margin-bottom: 150px;
     padding: 100px 70px;
     background: url("../../../assets/images/subscribe.jpg") center/cover no-repeat;
+    border-radius: 50px;
 }
 
 .subscribe-content {
     width: 450px;
     p {
         margin: 20px 0px 30px;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 414px){
+    .wrapper{
+        width: 100%;
+    }
+    .subscribe{
+        border-radius: 0;
+        padding: 100px 100px 100px 40px;
+    }
+    .subscribe-content{
+        width: 100%;
     }
 }
 
@@ -25,5 +39,6 @@
     .subscribe {
         padding: 88px 30px 140px;
         margin-bottom: 0px;
+        border-radius: 0;
     }
 }
