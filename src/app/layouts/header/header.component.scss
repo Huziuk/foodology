@@ -119,9 +119,6 @@ nav a {
 }
 
 @media screen and (max-width: 768px) and (min-width: 414px) {
-    header {
-        padding: 0px 30px;
-    }
     nav a:nth-child(-n + 3) {
         display: none;
     }
@@ -130,9 +127,14 @@ nav a {
     }
 }
 
+@media screen and (max-width: 624px) {
+    header{
+        padding: 0px 30px;
+    }
+}
+
 @media screen and (max-width: 470px) {
     header {
-        padding: 0px 30px;
         .header-inner {
             height: 67px;
         }
