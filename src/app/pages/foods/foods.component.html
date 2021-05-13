@@ -10,27 +10,19 @@
             <div class="menu-bottom">
                 <div class="menu-sidebar">
                     <div class="sidebar-btns">
-                        <button class="sidebar-btn" (click)="selectMainCat('Main Course')">Main Course</button>
-                        <button class="sidebar-btn" (click)="selectMainCat('Dizzerts')">Dizzerts</button>
-                        <button class="sidebar-btn" (click)="selectMainCat('Appetizers')">Appetizers</button>
+                        <button class="sidebar-btn" [ngClass]="{'active-btn': mainCat === 'Main Course'}" (click)="selectMainCat('Main Course')">Main Course</button>
+                        <button class="sidebar-btn" [ngClass]="{'active-btn': mainCat === 'Dizzerts'}" (click)="selectMainCat('Dizzerts')">Dizzerts</button>
+                        <button class="sidebar-btn" [ngClass]="{'active-btn': mainCat === 'Appetizers'}" (click)="selectMainCat('Appetizers')">Appetizers</button>
                     </div>
-                    <!--<div class="sidebar-footer">
-                        <span>Qt.</span>
-                        <div class="counter">
-                            <button class="minus"></button>
-                            <span>12</span>
-                            <button class="plus"></button>
-                        </div>
-                    </div>-->
                     <div class="sidebar-right">
-                        <form [formGroup]="subCatForm" class="choose" >
+                        <form [formGroup]="subCatForm" *ngIf="mainCat === 'Main Course'" class="choose" >
                             <select formControlName="cat" (change)="selectCat()" class="control-select">
                                 <option value="All" selected>All</option>
                                 <option [value]="c.name" *ngFor="let c of categories">{{c.name}}</option>
                             </select>
                         </form>
                         <div class="menu-list">
-                            <div class="list-item" *ngFor="let p of newProducts" (click)="selectProduct(p)">
+                            <div class="list-item" [ngClass]="{'active-item': selectProd.name === p.name}" *ngFor="let p of newProducts" (click)="selectProduct(p)">
                                 <div class="item-img" [style.backgroundImage]="'url('+p.images[0]+')'"></div>
                                 <div class="item-title">{{ p.name }}</div>
                             </div>
@@ -41,10 +33,6 @@
                     <div class="product">
                         <div class="product-photos">
                             <div class="product-main-photo" [style.backgroundImage]="'url('+selectProd?.images[0]+')'"></div>
-                            <div class="footer-photos">
-                                <div class="footer-photo" [style.backgroundImage]="'url('+selectProd?.images[1]+')'"></div>
-                                <div class="footer-photo" [style.backgroundImage]="'url('+selectProd?.images[2]+')'"></div>
-                            </div>
                         </div>
                         <div class="product-desc">
                             <h4>{{ selectProd?.name }}</h4>
@@ -52,7 +40,7 @@
                             <p>
                                 {{ selectProd?.description }}
                             </p>
-                            <h2>{{ selectProd?.price * selectProd?.count | number: '0.0-2' }}$</h2>
+                            <h2>{{ selectProd?.price * selectProd?.count | number: '0.2-2' }}$</h2>
                             <div class="counter">
                                 <button type="button" class="count-btn" (click)="changeCount(selectProd, false)"  [disabled]="countStatus"></button>
                                 <h5>{{ selectProd?.count }}</h5>
@@ -85,11 +73,11 @@
         </button>
         <div class="details-photos mb-4">
             <div class="details-main-photo mb-3" [style.backgroundImage]="'url('+selectProd?.images[0]+')'"></div>
-            <div class="details-footer-photos">
+            <!--<div class="details-footer-photos">
                 <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[1]+')'"></div>
                 <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[2]+')'"></div>
                 <div class="details-footer-photo" [style.backgroundImage]="'url('+selectProd?.images[3]+')'"></div>
-            </div>
+            </div>-->
         </div>
         <div class="description mb-4">
             <h4>{{ selectProd?.name }}</h4>

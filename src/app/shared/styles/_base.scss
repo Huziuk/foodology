@@ -429,10 +429,10 @@ p {
         height: 110px;
         margin-right: 20px;
         border-radius: 20px;
-        background-color: $primary;
+        background-color: transparent;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100%;
     }
     li{
         padding-left: 25px;
@@ -476,6 +476,7 @@ p {
         font-size: 54px;
     }
 }
+
 @media screen and (max-width: 880px) and (min-width: 768px) {
     .wrapper {
         width: 740px;

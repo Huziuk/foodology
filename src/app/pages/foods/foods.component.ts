@@ -58,6 +58,7 @@ export class FoodsComponent implements OnInit {
   }
 
   getFireCategories(): void {
+    console.log(this.mainCat);
     this.categoryService.firebaseCategories().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -66,6 +67,8 @@ export class FoodsComponent implements OnInit {
       )
     ).subscribe(data => {
       this.categories = data;
+      this.categories.splice(this.categories.findIndex(cat => cat.name === 'Dizzerts'), 1)
+      this.categories.splice(this.categories.findIndex(cat => cat.name === 'Appetizers'), 1)
     });
   }
 
@@ -91,6 +94,7 @@ export class FoodsComponent implements OnInit {
   selectMainCat(cat: string): void {
     this.mainCat = cat
     this.newProducts = []
+    this.getFireCategories()
     this.getFireProduct(this.mainCat, this.subCatForm.value.cat)
   }
 
