@@ -48,3 +48,5 @@ export class PricingComponent implements OnInit {
   }
 
 }
+
+

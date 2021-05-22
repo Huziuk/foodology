@@ -1,57 +1,56 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { map } from 'rxjs/operators';
 import { IOrder } from 'src/app/shared/interfaces/order.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
-  selector: 'app-admin-orders',
-  templateUrl: './admin-orders.component.html',
-  styleUrls: ['./admin-orders.component.scss']
+  selector: 'app-admin-orders-archive',
+  templateUrl: './admin-orders-archive.component.html',
+  styleUrls: ['./admin-orders-archive.component.scss']
 })
-export class AdminOrdersComponent implements OnInit {
-  orders: Array<any>;
+export class AdminOrdersArchiveComponent implements OnInit {
+  archiveOrders: Array<any>;
   modalRef: BsModalRef;
 
   constructor(
     private orderService: OrderService,
     private modalService: BsModalService,
+    private db: AngularFirestore,
   ) { }
 
   ngOnInit(): void {
-    this.getOrders()
+    this.getArchiveOrders()
   }
 
-  getOrders(): void {
-    this.orderService.fireOrder().snapshotChanges().pipe(
-      map(changes => 
+  getArchiveOrders(): void {
+    this.orderService.fireArchiveOrder().snapshotChanges().pipe(
+      map(changes =>
         changes.map(c =>
           ({ id: c.payload.doc.id, ...c.payload.doc.data() as object })
         )
       )
-    ).subscribe(data => {
-      this.orders = data;
-      console.log(this.orders);
-    })
+    ).subscribe(
+      data => {
+        this.archiveOrders = data;
+        console.log(this.archiveOrders);
+      },
+      err => {
+        console.log(err);
+      })
   }
 
   deleteOrder(order: IOrder): void {
-    const ID = order.id
-    delete order.id
-    this.orderService.fireArchiveOrder().add(order)
+    this.orderService.fireArchiveOrder().doc(order.id).delete()
       .then(() => {
-        this.orderService.fireOrder().doc(ID).delete()
-          .then(() => {
-            this.getOrders()
-          })
-          .catch(err => {
-            console.log(err);
-          })
+        console.log(order);
+        this.getArchiveOrders()
+        this.modalService.hide()
       })
       .catch(err => {
         console.log(err);
       })
-    this.modalService.hide()
   }
 
   openModal(template: TemplateRef<any>) {

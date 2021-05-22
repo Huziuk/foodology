@@ -58,7 +58,6 @@ export class FoodsComponent implements OnInit {
   }
 
   getFireCategories(): void {
-    console.log(this.mainCat);
     this.categoryService.firebaseCategories().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -95,6 +94,7 @@ export class FoodsComponent implements OnInit {
     this.mainCat = cat
     this.newProducts = []
     this.getFireCategories()
+    this.subCatForm.value.cat = 'All'
     this.getFireProduct(this.mainCat, this.subCatForm.value.cat)
   }
 

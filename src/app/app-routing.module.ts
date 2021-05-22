@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
+import { AdminOrdersArchiveComponent } from './admin/admin-orders-archive/admin-orders-archive.component';
 import { AdminGuard } from './shared/guards/admin/admin.guard';
 import { ProfileGuard } from './shared/guards/profile/profile.guard';
 import { LoginGuard } from './shared/guards/login/login.guard';
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'product', component: AdminProductComponent },
       { path: 'orders', component: AdminOrdersComponent },
       { path: 'bundle', component: AdminBundleComponent },
+      { path: 'archive', component: AdminOrdersArchiveComponent },
     ]
   },
 ];

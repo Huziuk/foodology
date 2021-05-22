@@ -2,10 +2,13 @@
     <app-admin-category></app-admin-category>
 </div>
 
-<button type="button" class="btn btn-primary add-btn" (click)="openModal(template)"> Add product</button>
+<div class="d-flex">
+    <button style="min-width: 132px;" type="button" class="btn btn-primary add-btn" (click)="openModal(template)"> Add product</button>
+    <input type="text" (input)="searchProduct()" [(ngModel)]="searchName" name="searchName" class="form-control ms-3" placeholder="Search product...">
+</div>
 
 <div class="products">
-    <div class="prod" *ngFor="let p of products; let i=index">
+    <div class="prod" *ngFor="let p of filterProducts; let i=index">
         <div class="form-content">
             <div class="inputs">
                 <div class="mb-3">
@@ -84,7 +87,7 @@
                     <div class="mb-3">
                         <label for="category" class="form-label">Category</label>
                         <select class="form-select" id="category" formControlName="category">
-                            <!--<option selected disabled>Choose category</option>-->
+                            <option value="Choose category" selected disabled>Choose category</option>
                             <option value="Main Course">Main Course</option>
                             <option value="Dizzerts">Dizzerts</option>
                             <option value="Appetizers">Appetizers</option>
@@ -93,7 +96,7 @@
                     <div class="mb-3">
                         <label for="subCategory" class="form-label">Sub Category</label>
                         <select class="form-select" id="subCategory" formControlName="subCategory">
-                            <!--<option selected disabled>Choose sub category</option>-->
+                            <option value="Choose sub category" selected disabled>Choose sub category</option>
                             <option [value]="c.name" *ngFor="let c of categories">{{c.name}}</option>
                         </select>
                     </div>

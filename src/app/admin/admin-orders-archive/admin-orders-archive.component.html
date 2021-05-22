@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="order" *ngFor="let o of orders; let i=index">
+    <div class="order" *ngFor="let o of archiveOrders; let i=index">
         <div class="d-flex">
             <div class="order-data d-flex flex-column mb-4">
                 <label class="label me-3">
@@ -15,10 +15,6 @@
                     <input type="text" class="control" disabled [value]="o.address">
                 </label>
             </div>
-            <!--<div class="prod" *ngFor="let p of o.products; let i=index">
-                    <p class="prod-name">{{ p.name }}</p>
-                    <p>{{ p.count }}</p>
-                </div>-->
             <table class="table">
                 <thead>
                     <tr>
@@ -38,10 +34,10 @@
                 </tbody>
             </table>
         </div>
-        <button class="btn done" (click)="openModal(template)">Done</button>
+        <button class="btn done" (click)="openModal(template)">Delete</button>
         <ng-template #template>
             <div class="modal-body text-center">
-                <p>The order will be archived. Сontinue?</p>
+                <p>The order will be deleted. Сontinue?</p>
                 <button type="button" class="btn btn-default" (click)="deleteOrder(o)">Yes</button>
                 <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button>
             </div>

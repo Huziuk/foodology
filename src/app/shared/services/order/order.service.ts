@@ -20,6 +20,10 @@ export class OrderService {
     return this.db.collection('orders')
   }
 
+  fireArchiveOrder(): AngularFirestoreCollection<IOrder> {
+    return this.db.collection('archiveOrders')
+  }
+
   addProductInBasket(prod: IProduct | IBundle): void {
     let products: Array<IProduct | IBundle> = [];
     if (localStorage.getItem('basket')){

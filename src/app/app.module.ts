@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -33,6 +33,7 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminBundleComponent } from './admin/admin-bundle/admin-bundle.component';
+import { AdminOrdersArchiveComponent } from './admin/admin-orders-archive/admin-orders-archive.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -55,7 +56,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MenustodayComponent,
     AdminBundleComponent,
     OrdersComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminOrdersArchiveComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
       positionClass: 'toast-bottom-right',
     }),
     NgxMaskModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,19 +18,16 @@ import { ThrowStmt } from '@angular/compiler';
 export class AdminProductComponent implements OnInit {
   @ViewChild("template") private template: TemplateRef<Object>;
   products: Array<any>
+  filterProducts: Array<IProduct>
   categories: Array<any> = []
   productForm: FormGroup;
-  images: Array<string> = [
-    //'https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2Fterris-crispy-fried-chicken-legs-3056879-10_preview-5b05ec40a474be00362260d7.jpeg?alt=media&token=53443cf3-873c-4880-982f-9526f246e54a',
-    //'https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2Fimage.jpg?alt=media&token=b1ebb261-ea34-4112-99a3-f651ec353282',
-    //'https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2FGrilled-BBQ-Chicken-SpendWithePennies-4.jpg?alt=media&token=8da5c05c-545e-4d3a-b96a-10c1883c95fd',
-    //'https://firebasestorage.googleapis.com/v0/b/foodology-b42eb.appspot.com/o/images%2FAutoportrait_de_Vincent_van_Gogh.jpg?alt=media&token=67a217e8-7359-4c68-91c9-5f14a678fc20',
-  ]
+  images: string;
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   modalRef: BsModalRef;
   editID: string;
   editStatus = false;
+  searchName: string;
 
   constructor(
     private modalService: BsModalService,
@@ -57,6 +54,7 @@ export class AdminProductComponent implements OnInit {
       )
     ).subscribe(data => {
       this.products = data;
+      this.filterProducts = this.products
     });
   }
 
@@ -114,7 +112,7 @@ export class AdminProductComponent implements OnInit {
     })
     this.modalRef.hide()
     this.productForm.reset()
-    this.images = []
+    this.images = null
     this.editID = null
     this.editStatus = false;
   }
@@ -143,6 +141,10 @@ export class AdminProductComponent implements OnInit {
     });
   }
 
+  searchProduct(): void {
+    this.filterProducts = this.products.filter((prod: IProduct) => prod.name.toLowerCase().indexOf(this.searchName.toLowerCase()) != -1);
+  }
+
   uploadFile(event) {
     const file = event.target.files[0];
     const filePath = `images/${file.name}`;
@@ -151,7 +153,7 @@ export class AdminProductComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();
     task.then(image => {
       this.storage.ref(`images/${image.metadata.name}`).getDownloadURL().subscribe(url => {
-        this.images.push(url)
+        this.images = url
       })
     })
   }
@@ -159,7 +161,7 @@ export class AdminProductComponent implements OnInit {
   deleteImage(url: string): void {
     this.storage.refFromURL(url).delete().subscribe(
       () => {
-        this.images.splice(this.images.indexOf(url), 1)
+        this.images = null
       },
       err => {
         console.log(err);
@@ -188,7 +190,7 @@ export class AdminProductComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.productForm.reset()
-    this.images = [];
+    this.images = null;
     this.modalRef = this.modalService.show(template);
     this.modalRef.setClass('modal-xl')
     let modalContent = document.querySelector('.modal-content') as HTMLElement
@@ -200,8 +202,8 @@ export class AdminProductComponent implements OnInit {
   }
 
   checkUpload(): boolean {
-    if(this.images){
-      return this.images.length === 4;
+    if(this.images) {
+      return true
     }
     return false
   }

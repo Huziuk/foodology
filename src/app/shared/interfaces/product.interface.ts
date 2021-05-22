@@ -8,7 +8,7 @@ export interface IProduct {
     description: string;
     ingredients: string;
     weight: string;
-    images: Array<string>;
+    images: string;
     price: number;
     count: number;
     id?: string;

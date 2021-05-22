@@ -11,7 +11,7 @@ export class Product implements IProduct {
         public description: string,
         public ingredients: string,
         public weight: string,
-        public images: Array<string>,
+        public images: string,
         public price: number
     ) {
         this.count = 1
